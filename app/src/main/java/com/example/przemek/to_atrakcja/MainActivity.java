@@ -1,6 +1,7 @@
 package com.example.przemek.to_atrakcja;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,8 +13,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    public void manMadeOnly (View view)
+    public void GPS (View view)
     {
-
+        Intent intent = new Intent(this, GPSActivity.class);
+        startActivity(intent);
     }
 }
