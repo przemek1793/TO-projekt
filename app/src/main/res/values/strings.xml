@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TO - Atrakcja</string>
+
+    <!-- MainActivity -->
+    <string name="AppName">Atrakcja</string>
+    <string name="GPS">Mapa okolicy</string>
+    <string name="Gallery">Mapy konkretnych miast</string>
+    <string name="Places">Pobliskie obiekty</string>
+    <string name="Options">Opcje</string>
+    <string name="LoginButton">Dla administratorów</string>
+
+</resources>
