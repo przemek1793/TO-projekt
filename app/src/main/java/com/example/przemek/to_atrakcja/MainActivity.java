@@ -18,4 +18,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, GPSActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        this.finish();
+    }
 }
