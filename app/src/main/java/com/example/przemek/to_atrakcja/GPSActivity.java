@@ -198,8 +198,5 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
 
-        //move map camera
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
-
     }
 }
