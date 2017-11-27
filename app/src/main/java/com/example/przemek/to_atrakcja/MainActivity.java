@@ -19,6 +19,30 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void Gallery (View view)
+    {
+        Intent intent = new Intent(this, GalleryActivity.class);
+        startActivity(intent);
+    }
+
+    public void Places (View view)
+    {
+        Intent intent = new Intent(this, PlacesActivity.class);
+        startActivity(intent);
+    }
+
+    public void Options (View view)
+    {
+        Intent intent = new Intent(this, OptionsActivity.class);
+        startActivity(intent);
+    }
+
+    public void Login (View view)
+    {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed()
     {

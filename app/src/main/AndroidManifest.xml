@@ -17,6 +17,14 @@
         </activity>
         <activity android:name=".GPSActivity">
         </activity>
+        <activity android:name=".GalleryActivity">
+        </activity>
+        <activity android:name=".LoginActivity">
+        </activity>
+        <activity android:name=".OptionsActivity">
+        </activity>
+        <activity android:name=".PlacesActivity">
+        </activity>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyC9bEfku65mhRHw7qU3Z3bomjsccMd-bLQ"/>

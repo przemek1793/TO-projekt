@@ -9,4 +9,9 @@
     <string name="Options">Opcje</string>
     <string name="LoginButton">Dla administratorów</string>
 
+    <!-- GPSActivity -->
+    <string name="normalmap">Domyślna mapa</string>
+    <string name="hybridmap">Mapa hybrydowa</string>
+    <string name="terrainmap">Mapa terenowa</string>
+
 </resources>

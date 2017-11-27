@@ -7,6 +7,41 @@
               android:name="com.google.android.gms.maps.MapFragment"
               android:id="@+id/map"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"/>
+              android:layout_height="match_parent">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:text="@string/normalmap"
+                android:id="@+id/normalmap"
+                android:padding="10dp"
+                android:textSize="@dimen/MapButtonSize"
+                android:layout_marginTop="20dp"
+                android:onClick="NormalMap"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text="@string/hybridmap"
+                android:id="@+id/hybridmap"
+                android:padding="10dp"
+                android:textSize="@dimen/MapButtonSize"
+                android:layout_marginTop="20dp"
+                android:onClick="HybridMap"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="@string/terrainmap"
+                android:id="@+id/terrainmap"
+                android:padding="10dp"
+                android:textSize="@dimen/MapButtonSize"
+                android:layout_marginTop="20dp"
+                android:onClick="TerrainMap"/>
+
+    </fragment>
 
 </RelativeLayout>

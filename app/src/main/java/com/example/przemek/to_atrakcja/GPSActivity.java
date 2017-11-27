@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -142,7 +143,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap map) {
         mGoogleMap=map;
-        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID); //mozna potem dodac w opcjach wybor typu mapy
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -198,5 +199,20 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
 
+    }
+
+    public void NormalMap (View view)
+    {
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+
+    public void HybridMap (View view)
+    {
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+    }
+
+    public void TerrainMap (View view)
+    {
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
     }
 }
