@@ -1,9 +1,10 @@
-package com.example.przemek.to_atrakcja;
+package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.example.przemek.to_atrakcja.R;
 
 public class MainActivity extends Activity {
 

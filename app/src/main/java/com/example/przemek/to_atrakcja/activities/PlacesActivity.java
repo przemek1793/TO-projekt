@@ -1,7 +1,8 @@
-package com.example.przemek.to_atrakcja;
+package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.example.przemek.to_atrakcja.R;
 
 /**
  * Created by Przemek on 27.11.2017.
