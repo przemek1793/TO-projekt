@@ -14,4 +14,7 @@
     <string name="hybridmap">Mapa hybrydowa</string>
     <string name="terrainmap">Mapa terenowa</string>
 
+    <!-- LoginActivity -->
+    <string name="LoginTitle">Logowanie administratora</string>
+
 </resources>

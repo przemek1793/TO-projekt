@@ -14,4 +14,7 @@
     <!-- GPSActivity -->
     <dimen name="MapButtonSize">10dp</dimen>
 
+    <!-- LoginActivity -->
+    <dimen name="TextInputLayout_margin">16dp</dimen>
+
 </resources>
