@@ -16,5 +16,7 @@
 
     <!-- LoginActivity -->
     <string name="LoginTitle">Logowanie administratora</string>
-
+    <string name="TryToLogInButton">Zaloguj</string>
+    <string name="LoginHint">login</string>
+    <string name="PasswordHint">haslo</string>
 </resources>
