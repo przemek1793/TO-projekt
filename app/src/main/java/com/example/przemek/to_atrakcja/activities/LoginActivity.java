@@ -19,7 +19,7 @@ import java.net.URL;
  */
 public class LoginActivity extends Activity {
 
-    private static String URL_check_login = "http://192.168.0.13/android_connect/check_login.php";
+    private static String URL_check_login = "http://192.168.0.13/check_login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,6 +29,8 @@ public class LoginActivity extends Activity {
     }
 
     class LogIn extends AsyncTask<String, String, String> {
+
+        String response;
 
         @Override
         protected void onPreExecute() {
@@ -63,25 +65,28 @@ public class LoginActivity extends Activity {
 
                 urlConnection.connect();
 
+                OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
+
                 os = new BufferedOutputStream(urlConnection.getOutputStream());
                 os.write(message.getBytes());
 
                 os.flush();
 
-    //            is = urlConnection.getInputStream();
+                urlConnection.getResponseMessage();
+                urlConnection.getResponseCode();
 
-   //             Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
+                InputStreamReader aa= new InputStreamReader((urlConnection.getInputStream()));
+                BufferedReader br = new BufferedReader(aa);
 
-   //             String line;
-    //            StringBuilder sb = new StringBuilder();
-   //             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-   //             while ((line = br.readLine()) != null) {
-   //                 sb.append(line);
-   //             }
-  //              TryToLogButton.setText(sb.toString());
+                String line;
+                StringBuilder sb = new StringBuilder();
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
 
+                response=sb.toString();
                 os.close();
-  //              is.close();
+                br.close();
 
                 urlConnection.disconnect();
 
@@ -97,6 +102,8 @@ public class LoginActivity extends Activity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
+            Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
+          //  TryToLogButton.setText(status);
         }
 
     }
