@@ -1,11 +1,13 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import com.example.przemek.to_atrakcja.R;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +32,7 @@ public class LoginActivity extends Activity {
 
     class LogIn extends AsyncTask<String, String, String> {
 
+        JSONObject jsonResponse;
         String response;
 
         @Override
@@ -46,13 +49,14 @@ public class LoginActivity extends Activity {
             OutputStream os = null;
             InputStream is = null;
             try {
+                String message;
                 EditText InputPassword=findViewById(R.id.InputPassword);
                 EditText InputLogin=findViewById(R.id.InputLogin);
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("login", InputLogin.getText().toString());
                 jsonObject.put("Password", InputPassword.getText().toString());
-                String message = jsonObject.toString();
+                message = jsonObject.toString();
 
                 url=new URL(URL_check_login);
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -68,7 +72,7 @@ public class LoginActivity extends Activity {
                 OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
 
                 os = new BufferedOutputStream(urlConnection.getOutputStream());
-                os.write(message.getBytes());
+                os.write(message.getBytes("UTF-8"));
 
                 os.flush();
 
@@ -90,6 +94,9 @@ public class LoginActivity extends Activity {
 
                 urlConnection.disconnect();
 
+    //            JSONArray Jarray = new JSONArray(response);
+                jsonResponse = new JSONObject(response) ;
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -102,8 +109,24 @@ public class LoginActivity extends Activity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
-          //  TryToLogButton.setText(status);
+            try {
+                if (jsonResponse.getInt("success")==1)
+                {
+                    Intent intent = new Intent(LoginActivity.this, AdministratorActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponse);
+                    DatabaseResponse.setText(jsonResponse.getString("message"));
+                    Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
+                    TryToLogButton.setText("Zaloguj");
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
         }
 
     }

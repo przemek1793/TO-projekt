@@ -16,5 +16,6 @@
 
     <!-- LoginActivity -->
     <dimen name="TextInputLayout_margin">16dp</dimen>
+    <dimen name="DatabaseResponseSize">16dp</dimen>
 
 </resources>
