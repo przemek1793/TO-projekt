@@ -55,6 +55,7 @@
             android:id="@+id/Logout"
             style="@style/MenuButtonStyle"
             android:text="@string/Logout"
+            android:onClick="Logout"
             android:layout_alignParentBottom="true"
     />
 </RelativeLayout>
