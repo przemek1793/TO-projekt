@@ -1,7 +1,9 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -112,6 +114,8 @@ public class LoginActivity extends Activity {
             try {
                 if (jsonResponse.getInt("success")==1)
                 {
+                    SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
+                    sharedPreferences.edit().putString("Zalogowano?","tak").apply();
                     Intent intent = new Intent(LoginActivity.this, AdministratorActivity.class);
                     startActivity(intent);
                 }
