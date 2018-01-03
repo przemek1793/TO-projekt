@@ -135,4 +135,11 @@ public class LoginActivity extends Activity {
     {
         new LogIn().execute();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

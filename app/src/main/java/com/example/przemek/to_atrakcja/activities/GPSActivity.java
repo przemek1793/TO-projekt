@@ -2,6 +2,7 @@ package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -18,7 +19,10 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -214,5 +218,12 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     public void TerrainMap (View view)
     {
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

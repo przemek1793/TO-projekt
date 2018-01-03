@@ -19,4 +19,11 @@
     <string name="TryToLogInButton">Zaloguj</string>
     <string name="LoginHint">login</string>
     <string name="PasswordHint">haslo</string>
+
+    <!-- AdministratorActivity -->
+    <string name="AdminTitle">Panel Administratora</string>
+    <string name="ManageMaps">Zarządzaj mapami</string>
+    <string name="ManagePlaces">Zarządzaj miejscami</string>
+    <string name="ManageObjects">Zarządzanie obiektami</string>
+    <string name="Logout">Wyloguj</string>
 </resources>

@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:background="@color/colorBlack"
+        tools:context="com.example.przemek.to_atrakcja.activities.AdministratorActivity">
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AdministratorTitle"
+            android:text="@string/AdminTitle"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/AppNameSize"
+            android:layout_margin="@dimen/AppName_margin"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ManageMaps"
+            style="@style/MenuButtonStyle"
+            android:text="@string/ManageMaps"
+            android:layout_below="@+id/AdministratorTitle"
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ManagePlaces"
+            style="@style/MenuButtonStyle"
+            android:text="@string/ManagePlaces"
+            android:layout_below="@+id/ManageMaps"
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ManageObjects"
+            style="@style/MenuButtonStyle"
+            android:text="@string/ManageObjects"
+            android:layout_below="@+id/ManagePlaces"
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Logout"
+            style="@style/MenuButtonStyle"
+            android:text="@string/Logout"
+            android:layout_alignParentBottom="true"
+    />
 </RelativeLayout>
