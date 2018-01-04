@@ -48,8 +48,7 @@ public class LoginActivity extends Activity {
 
             URL url;
             HttpURLConnection urlConnection = null;
-            OutputStream os = null;
-            InputStream is = null;
+            OutputStream os;
             try {
                 String message;
                 EditText InputPassword=findViewById(R.id.InputPassword);
@@ -96,7 +95,6 @@ public class LoginActivity extends Activity {
 
                 urlConnection.disconnect();
 
-    //            JSONArray Jarray = new JSONArray(response);
                 jsonResponse = new JSONObject(response) ;
 
             } catch (IOException e) {

@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class AddMapsActivity extends Activity
 {
-    private static String URL_check_login = "http://192.168.0.13/add_map.php";
+    private static String URL_add_map = "http://192.168.0.13/add_map.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,8 +55,7 @@ public class AddMapsActivity extends Activity
 
             URL url;
             HttpURLConnection urlConnection = null;
-            OutputStream os = null;
-            InputStream is = null;
+            OutputStream os;
             try {
                 String message;
                 EditText InputMapName=findViewById(R.id.InputMapName);
@@ -67,7 +66,7 @@ public class AddMapsActivity extends Activity
                 jsonObject.put("MapURL", InputMapURL.getText().toString());
                 message = jsonObject.toString();
 
-                url=new URL(URL_check_login);
+                url=new URL(URL_add_map);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);

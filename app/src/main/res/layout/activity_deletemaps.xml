@@ -12,8 +12,8 @@
     <TableLayout
             style="@style/TableLayoutStyle"
             android:id="@+id/TableHeadersDeleteMap"
-            android:layout_below="@+id/DeleteMapTitle">
-
+            android:layout_below="@+id/DeleteMapTitle"
+            android:layout_marginTop="@dimen/TableVerticalMargin">
         <TableRow>
             <LinearLayout
                     style="LinearLayoutTableStyle"
@@ -36,21 +36,15 @@
             android:background="@color/colorWhite"
             android:layout_below="@+id/TableHeadersDeleteMap">
 
-
-
-        <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite" >
-
             <TableLayout
                     android:id="@+id/TableDeleteMapData"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="0dp" >
+                    style="@style/TableLayoutStyle" >
             </TableLayout>
-        </HorizontalScrollView>
     </ScrollView>
+
+    <TextView
+            android:layout_below="@+id/TableHeadersDeleteMap"
+            android:id="@+id/DatabaseResponseDeleteMaps"
+            style="@style/DatabaseResponseStyle"/>
 
 </RelativeLayout>
