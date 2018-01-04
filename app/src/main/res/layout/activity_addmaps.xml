@@ -3,18 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/RelativeLayoutStyle"
-        tools:context="com.example.przemek.to_atrakcja.activities.AddMaps">
+        tools:context="com.example.przemek.to_atrakcja.activities.AddMapsActivity">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleStyle"
             android:id="@+id/AddMapsTitle"
-            android:text="@string/AddMapsTitle"
-            android:layout_centerHorizontal="true"
-            android:textSize="@dimen/AppNameSize"
-            android:layout_margin="@dimen/AppName_margin"
-            android:gravity="center"
-            android:textColor="@color/colorWhite"/>
+            android:text="@string/AddMapsTitle"/>
 
     <android.support.design.widget.TextInputLayout
             style="@style/TextInputLayoutStyle"

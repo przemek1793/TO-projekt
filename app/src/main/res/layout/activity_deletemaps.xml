@@ -3,6 +3,11 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 style="@style/RelativeLayoutStyle"
-                tools:context="com.example.przemek.to_atrakcja.activities.DeleteMaps">
+                tools:context="com.example.przemek.to_atrakcja.activities.DeleteMapsActivity">
+
+    <TextView
+            style="@style/TitleStyle"
+            android:id="@+id/DeleteMapTitle"
+            android:text="@string/DeleteMapsTitle"/>
 
 </RelativeLayout>

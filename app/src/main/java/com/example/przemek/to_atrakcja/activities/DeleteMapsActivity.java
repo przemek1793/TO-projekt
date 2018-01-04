@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.example.przemek.to_atrakcja.R;
 
-public class DeleteMaps extends Activity
+public class DeleteMapsActivity extends Activity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)

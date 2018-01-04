@@ -16,7 +16,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AddMaps extends Activity
+public class AddMapsActivity extends Activity
 {
     private static String URL_check_login = "http://192.168.0.13/add_map.php";
 

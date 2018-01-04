@@ -24,13 +24,13 @@ public class ManageMapsActivity extends Activity
 
     public void AddMaps (View view)
     {
-        Intent intent = new Intent(this, AddMaps.class);
+        Intent intent = new Intent(this, AddMapsActivity.class);
         startActivity(intent);
     }
 
     public void DeleteMaps (View view)
     {
-        Intent intent = new Intent(this, DeleteMaps.class);
+        Intent intent = new Intent(this, DeleteMapsActivity.class);
         startActivity(intent);
     }
 }

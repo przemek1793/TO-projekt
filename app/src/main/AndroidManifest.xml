@@ -29,9 +29,9 @@
         </activity>
         <activity android:name=".activities.ManageMapsActivity">
         </activity>
-        <activity android:name=".activities.AddMaps">
+        <activity android:name=".activities.AddMapsActivity">
         </activity>
-        <activity android:name=".activities.DeleteMaps">
+        <activity android:name=".activities.DeleteMapsActivity">
         </activity>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"

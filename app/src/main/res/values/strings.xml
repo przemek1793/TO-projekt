@@ -35,4 +35,7 @@
     <string name="MapNameHint">Nazwa miejsca</string>
     <string name="MapURLHint">URL mapy</string>
     <string name="TryToAddMap">Dodaj mapę</string>
+
+    <!-- DeleteMapsActivity -->
+    <string name="DeleteMapsTitle">Usuwanie map</string>
 </resources>
