@@ -2,12 +2,13 @@ package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.widget.*;
 import com.example.przemek.to_atrakcja.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -95,21 +97,19 @@ public class DeleteMapsActivity extends Activity
                 {
                     TableLayout table = (TableLayout) findViewById(R.id.TableDeleteMapData);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
-                    TextView WzorName = (TextView) findViewById(R.id.DeleteMapDataNameExample);
-                    TextView WzorURL = (TextView) findViewById(R.id.DeleteMapDataURLExample);
-                    LinearLayout WzorLinear = (LinearLayout) findViewById(R.id.DeleteMapDataLinearLayoutExample);
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
                         JSONObject object = jsonrzedy.getJSONObject(n);
                         TableRow row = new TableRow(DeleteMapsActivity.this);
-                        LinearLayout Linear = new LinearLayout(DeleteMapsActivity.this, null, R.style.LinearLayoutTableStyle);
-                        Linear.setLayoutParams(WzorLinear.getLayoutParams());
-                        TextView TextName = new TextView(DeleteMapsActivity.this,null , R.style.TableCellNameStyle);
-                //        TextView TextURL = new TextView(DeleteMapsActivity.this, null, R.style.TableCellURLStyle );
-                //       TextName.setLayoutParams(WzorName.getLayoutParams());
-                 //       TextURL.setLayoutParams(WzorURL.getLayoutParams());
+                        LinearLayout Linear = (LinearLayout) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_linear_layout, null);
+                        TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
+                        ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
+                        TextName.setText(object.getString("NAME"));
+
+                        new DownloadImageTask(URLImage).execute(object.getString("MAPURL"));
+
                         Linear.addView(TextName);
-                 //       Linear.addView(TextURL);
+                        Linear.addView(URLImage);
                         row.addView(Linear);
                         table.addView(row);
                     }
@@ -126,5 +126,39 @@ public class DeleteMapsActivity extends Activity
             }
         }
 
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+                try{
+                    urldisplay="https://rownacszanse.pl/uploads_public/cms/parameter-6718/error-803716_640.png";
+                    InputStream in = new java.net.URL(urldisplay).openStream();
+                    mIcon11 = BitmapFactory.decodeStream(in);
+                }
+                catch (Exception e1) {
+                    Log.e("Error", e1.getMessage());
+                    e1.printStackTrace();
+                }
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }

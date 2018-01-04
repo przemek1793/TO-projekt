@@ -16,16 +16,13 @@
             android:layout_marginTop="@dimen/TableVerticalMargin">
         <TableRow>
             <LinearLayout
-                    android:id="@+id/DeleteMapDataLinearLayoutExample"
                     style="LinearLayoutTableStyle"
                     android:layout_weight="1"
                     android:background="@drawable/table_border">
                 <TextView
-                        android:id="@+id/DeleteMapDataNameExample"
                         android:text="@string/MapsTableHeaderName"
                         style="@style/TableCellNameStyle"/>
                 <TextView
-                        android:id="@+id/DeleteMapDataURLExample"
                         android:text="@string/MapsTableHeaderURL"
                         style="@style/TableCellURLStyle"/>
             </LinearLayout>
@@ -36,7 +33,6 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
             android:layout_below="@+id/TableHeadersDeleteMap">
 
             <TableLayout
