@@ -31,4 +31,10 @@ public class AdministratorActivity extends Activity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void ManageMaps (View view)
+    {
+        Intent intent = new Intent(this, ManageMapsActivity.class);
+        startActivity(intent);
+    }
 }

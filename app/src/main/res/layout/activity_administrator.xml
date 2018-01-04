@@ -22,32 +22,28 @@
             android:textColor="@color/colorWhite"
             android:gravity="center"/>
 
-    <Button
-            android:layout_width="wrap_content"
+    <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ManageMaps"
-            style="@style/MenuButtonStyle"
-            android:text="@string/ManageMaps"
-            android:layout_below="@+id/AdministratorTitle"
-    />
+            android:layout_centerVertical="true">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ManageMaps"
+                style="@style/MenuButtonStyle"
+                android:text="@string/ManageMaps"
+                android:onClick="ManageMaps"
+        />
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ManagePlaces"
-            style="@style/MenuButtonStyle"
-            android:text="@string/ManagePlaces"
-            android:layout_below="@+id/ManageMaps"
-    />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ManageObjects"
-            style="@style/MenuButtonStyle"
-            android:text="@string/ManageObjects"
-            android:layout_below="@+id/ManagePlaces"
-    />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ManagePlaces"
+                style="@style/MenuButtonStyle"
+                android:text="@string/ManagePlaces"
+                android:layout_below="@+id/ManageMaps"
+        />
+    </RelativeLayout>
 
     <Button
             android:layout_width="wrap_content"

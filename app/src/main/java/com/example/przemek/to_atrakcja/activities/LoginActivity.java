@@ -121,7 +121,7 @@ public class LoginActivity extends Activity {
                 }
                 else
                 {
-                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponse);
+                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseLogin);
                     DatabaseResponse.setText(jsonResponse.getString("message"));
                     Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
                     TryToLogButton.setText("Zaloguj");

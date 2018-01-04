@@ -24,6 +24,15 @@
     <string name="AdminTitle">Panel Administratora</string>
     <string name="ManageMaps">Zarządzaj mapami</string>
     <string name="ManagePlaces">Zarządzaj miejscami</string>
-    <string name="ManageObjects">Zarządzanie obiektami</string>
     <string name="Logout">Wyloguj</string>
+
+    <!-- ManageMapsActivity -->
+    <string name="AddMaps">Dodaj mapę</string>
+    <string name="DeleteMaps">Usuń mapę</string>
+
+    <!-- AddMapsActivity -->
+    <string name="AddMapsTitle">Dodawanie map</string>
+    <string name="MapNameHint">Nazwa miejsca</string>
+    <string name="MapURLHint">URL mapy</string>
+    <string name="TryToAddMap">Dodaj mapę</string>
 </resources>
