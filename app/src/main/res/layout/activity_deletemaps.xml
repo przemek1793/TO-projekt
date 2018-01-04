@@ -10,4 +10,56 @@
             android:id="@+id/DeleteMapTitle"
             android:text="@string/DeleteMapsTitle"/>
 
+    <TableLayout
+            android:id="@+id/TableHeadersDeleteMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DeleteMapTitle"
+            android:layout_marginHorizontal="@dimen/TableHorizontalMargin"
+            android:layout_marginTop="@dimen/TableVerticalMargin">
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:background="@drawable/table_border">
+            <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/table_border">
+
+                <TextView
+                        android:text="@string/MapsTableHeaderName"
+                        style="@style/TableCellNameStyle"/>
+                <TextView
+                        android:text="@string/MapsTableHeaderURL"
+                        style="@style/TableCellURLStyle"/>
+            </LinearLayout>
+        </TableRow>
+
+    </TableLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:layout_below="@+id/TableHeadersDeleteMap">
+
+
+
+        <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite" >
+
+            <TableLayout
+                    android:id="@+id/TableDeleteMapData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp" >
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
 </RelativeLayout>

@@ -18,4 +18,9 @@
     <dimen name="TextInputLayout_margin">16dp</dimen>
     <dimen name="DatabaseResponseSize">16dp</dimen>
 
+    <!-- DeleteMapsActivity -->
+    <dimen name="TableHorizontalMargin">16dp</dimen>
+    <dimen name="TableVerticalMargin">16dp</dimen>
+    <dimen name="TableRowPadding">5dp</dimen>
+
 </resources>

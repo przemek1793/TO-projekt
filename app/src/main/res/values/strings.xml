@@ -38,4 +38,6 @@
 
     <!-- DeleteMapsActivity -->
     <string name="DeleteMapsTitle">Usuwanie map</string>
+    <string name="MapsTableHeaderName">Nazwa</string>
+    <string name="MapsTableHeaderURL">Mapa</string>
 </resources>
