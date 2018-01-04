@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import com.example.przemek.to_atrakcja.R;
 import org.json.JSONArray;
@@ -90,7 +93,26 @@ public class DeleteMapsActivity extends Activity
             {
                 if (jsonResponse.getInt("success")==1)
                 {
+                    TableLayout table = (TableLayout) findViewById(R.id.TableDeleteMapData);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
+                    TextView WzorName = (TextView) findViewById(R.id.DeleteMapDataNameExample);
+                    TextView WzorURL = (TextView) findViewById(R.id.DeleteMapDataURLExample);
+                    LinearLayout WzorLinear = (LinearLayout) findViewById(R.id.DeleteMapDataLinearLayoutExample);
+                    for(int n = 0; n < jsonrzedy.length(); n++)
+                    {
+                        JSONObject object = jsonrzedy.getJSONObject(n);
+                        TableRow row = new TableRow(DeleteMapsActivity.this);
+                        LinearLayout Linear = new LinearLayout(DeleteMapsActivity.this, null, R.style.LinearLayoutTableStyle);
+                        Linear.setLayoutParams(WzorLinear.getLayoutParams());
+                        TextView TextName = new TextView(DeleteMapsActivity.this,null , R.style.TableCellNameStyle);
+                //        TextView TextURL = new TextView(DeleteMapsActivity.this, null, R.style.TableCellURLStyle );
+                //       TextName.setLayoutParams(WzorName.getLayoutParams());
+                 //       TextURL.setLayoutParams(WzorURL.getLayoutParams());
+                        Linear.addView(TextName);
+                 //       Linear.addView(TextURL);
+                        row.addView(Linear);
+                        table.addView(row);
+                    }
                 }
                 else
                 {
