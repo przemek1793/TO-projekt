@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:gravity="center"
-           android:layout_centerHorizontal="true"
-           android:padding="@dimen/TableRowPadding"
-           android:layout_weight="4"
-           android:background="@drawable/table_border">
+           style="@style/TableCellURLStyle">
 </ImageView>

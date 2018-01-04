@@ -100,18 +100,16 @@ public class DeleteMapsActivity extends Activity
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
                         JSONObject object = jsonrzedy.getJSONObject(n);
-                        TableRow row = new TableRow(DeleteMapsActivity.this);
-                        LinearLayout Linear = (LinearLayout) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_linear_layout, null);
+                        TableRow row = (TableRow) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.map_table_row, null);
                         TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
                         ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
                         TextName.setText(object.getString("NAME"));
 
                         new DownloadImageTask(URLImage).execute(object.getString("MAPURL"));
 
-                        Linear.addView(TextName);
-                        Linear.addView(URLImage);
-                        row.addView(Linear);
                         table.addView(row);
+                        row.addView(TextName);
+                        row.addView(URLImage);
                     }
                 }
                 else
