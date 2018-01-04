@@ -144,15 +144,8 @@ public class DeleteMapsActivity extends Activity
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
-                try{
-                    urldisplay="https://rownacszanse.pl/uploads_public/cms/parameter-6718/error-803716_640.png";
-                    InputStream in = new java.net.URL(urldisplay).openStream();
-                    mIcon11 = BitmapFactory.decodeStream(in);
-                }
-                catch (Exception e1) {
-                    Log.e("Error", e1.getMessage());
-                    e1.printStackTrace();
-                }
+
+                mIcon11=BitmapFactory.decodeResource(DeleteMapsActivity.this.getResources(), R.drawable.error_obraz);
             }
             return mIcon11;
         }
