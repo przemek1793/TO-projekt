@@ -73,4 +73,18 @@
         <item name="android:background">@drawable/table_border</item>
     </style>
 
+    <style name="LinearLayoutTableStyle">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TableLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/TableHorizontalMargin</item>
+        <item name="android:layout_marginRight">@dimen/TableHorizontalMargin</item>
+        <item name="android:layout_marginTop">@dimen/TableVerticalMargin</item>
+    </style>
+
 </resources>

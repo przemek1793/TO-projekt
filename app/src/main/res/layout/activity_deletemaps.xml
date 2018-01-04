@@ -9,25 +9,16 @@
             style="@style/TitleStyle"
             android:id="@+id/DeleteMapTitle"
             android:text="@string/DeleteMapsTitle"/>
-
     <TableLayout
+            style="@style/TableLayoutStyle"
             android:id="@+id/TableHeadersDeleteMap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/DeleteMapTitle"
-            android:layout_marginHorizontal="@dimen/TableHorizontalMargin"
-            android:layout_marginTop="@dimen/TableVerticalMargin">
+            android:layout_below="@+id/DeleteMapTitle">
 
-        <TableRow
-                android:layout_width="match_parent"
-                android:background="@drawable/table_border">
+        <TableRow>
             <LinearLayout
+                    style="LinearLayoutTableStyle"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:background="@drawable/table_border">
-
                 <TextView
                         android:text="@string/MapsTableHeaderName"
                         style="@style/TableCellNameStyle"/>
