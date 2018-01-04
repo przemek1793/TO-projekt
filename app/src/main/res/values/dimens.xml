@@ -24,6 +24,6 @@
     <dimen name="TableRowPadding">5dp</dimen>
     <dimen name="TableRowNameWidth">120dp</dimen>
     <dimen name="TableRowURLWidth">175dp</dimen>
-    <dimen name="TableMaxmaxHeight">100dp</dimen>
+    <dimen name="TableMaxmaxHeight">150dp</dimen>
 
 </resources>

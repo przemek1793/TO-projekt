@@ -9,32 +9,26 @@
             style="@style/TitleStyle"
             android:id="@+id/DeleteMapTitle"
             android:text="@string/DeleteMapsTitle"/>
-    <TableLayout
-            style="@style/TableLayoutStyle"
-            android:id="@+id/TableHeadersDeleteMap"
-            android:layout_below="@+id/DeleteMapTitle"
-            android:layout_marginTop="@dimen/TableVerticalMargin">
-        <TableRow>
-            <TextView
-                    android:text="@string/MapsTableHeaderName"
-                    style="@style/TableCellNameStyle"
-                    android:layout_height="wrap_content"/>
-            <TextView
-                    android:text="@string/MapsTableHeaderURL"
-                    style="@style/TableCellURLStyle"
-                    android:textColor="@color/colorWhite"/>
-        </TableRow>
-
-    </TableLayout>
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TableHeadersDeleteMap">
+            android:layout_below="@+id/DeleteMapTitle">
 
             <TableLayout
                     android:id="@+id/TableDeleteMapData"
                     style="@style/TableLayoutStyle" >
+                <TableRow>
+                    <TextView
+                            android:text="@string/MapsTableHeaderName"
+                            style="@style/TableCellNameStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/table_border"/>
+                    <TextView
+                            android:text="@string/MapsTableHeaderURL"
+                            style="@style/TableCellURLStyle"
+                            android:textColor="@color/colorWhite"/>
+                </TableRow>
             </TableLayout>
     </ScrollView>
 
