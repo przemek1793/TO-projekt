@@ -54,29 +54,22 @@
     <style name="TableCellNameStyle">
         <item name="android:gravity">center</item>
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:padding">@dimen/TableRowPadding</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/table_border</item>
+        <item name="android:layout_width">@dimen/TableRowNameWidth</item>
     </style>
 
     <style name="TableCellURLStyle">
         <item name="android:gravity">center</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:padding">@dimen/TableRowPadding</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:layout_weight">4</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/TableRowURLWidth</item>
         <item name="android:background">@drawable/table_border</item>
-    </style>
-
-    <style name="LinearLayoutTableStyle">
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_width">0dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:maxHeight">@dimen/TableMaxmaxHeight</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
     </style>
 
     <style name="TableLayoutStyle">
