@@ -20,8 +20,6 @@ public class AdministratorActivity extends Activity
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
         finish();
     }
 
@@ -29,8 +27,7 @@ public class AdministratorActivity extends Activity
     {
         SharedPreferences sharedPreferences = this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("Zalogowano?","nie").apply();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void ManageMaps (View view)

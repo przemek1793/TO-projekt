@@ -116,6 +116,7 @@ public class LoginActivity extends Activity {
                     sharedPreferences.edit().putString("Zalogowano?","tak").apply();
                     Intent intent = new Intent(LoginActivity.this, AdministratorActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 else
                 {
@@ -141,8 +142,6 @@ public class LoginActivity extends Activity {
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
         finish();
     }
 }

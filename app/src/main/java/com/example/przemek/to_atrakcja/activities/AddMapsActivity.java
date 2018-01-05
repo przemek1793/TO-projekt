@@ -1,7 +1,6 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -30,8 +29,6 @@ public class AddMapsActivity extends Activity
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, AdministratorActivity.class);
-        startActivity(intent);
         finish();
     }
 

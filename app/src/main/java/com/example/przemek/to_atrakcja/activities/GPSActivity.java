@@ -2,7 +2,6 @@ package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -223,8 +222,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
         finish();
     }
 }

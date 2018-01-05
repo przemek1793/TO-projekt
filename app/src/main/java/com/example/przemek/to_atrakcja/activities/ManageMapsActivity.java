@@ -18,8 +18,6 @@ public class ManageMapsActivity extends Activity
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, AdministratorActivity.class);
-        startActivity(intent);
         finish();
     }
 
