@@ -60,10 +60,12 @@ public class AddMapsActivity extends Activity
                 String message;
                 EditText InputMapName=findViewById(R.id.InputMapName);
                 EditText InputMapURL=findViewById(R.id.InputMapURL);
+                String MapURL=InputMapURL.getText().toString();
+                MapURL=MapURL.replaceAll("\\.","ǤЖ");
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("Name", InputMapName.getText().toString());
-                jsonObject.put("MapURL", InputMapURL.getText().toString());
+                jsonObject.put("MapURL", MapURL);
                 message = jsonObject.toString();
 
                 url=new URL(URL_add_map);

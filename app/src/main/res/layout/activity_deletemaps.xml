@@ -33,7 +33,7 @@
     </ScrollView>
 
     <TextView
-            android:layout_below="@+id/TableHeadersDeleteMap"
+            android:layout_below="@+id/DeleteMapTitle"
             android:id="@+id/DatabaseResponseDeleteMaps"
             style="@style/DatabaseResponseStyle"/>
 

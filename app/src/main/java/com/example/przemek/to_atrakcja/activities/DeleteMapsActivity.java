@@ -103,9 +103,10 @@ public class DeleteMapsActivity extends Activity
                         TableRow row = (TableRow) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.map_table_row, null);
                         TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
                         ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
-                        TextName.setText(object.getString("NAME"));
 
-                        new DownloadImageTask(URLImage).execute(object.getString("MAPURL"));
+                        String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
+                        TextName.setText(object.getString("NAME"));
+                        new DownloadImageTask(URLImage).execute(MapURL);
 
                         table.addView(row);
                         row.addView(TextName);
