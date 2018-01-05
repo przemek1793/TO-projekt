@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/RelativeLayoutStyle"
+                android:id="@+id/GalleryRelativeLayout"
+                tools:context="com.example.przemek.to_atrakcja.activities.GalleryActivity">
+
+    <TextView
+            style="@style/TitleStyle"
+            android:id="@+id/GalleryTitle"
+            android:text="@string/GalleryTitle"/>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GalleryTitle">
+
+        <TableLayout
+                android:id="@+id/TableGallery"
+                style="@style/TableLayoutStyle" >
+            <TableRow>
+                <TextView
+                        android:text="@string/MapsTableHeaderName"
+                        style="@style/TableCellNameStyle"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"/>
+                <TextView
+                        android:text="@string/MapsTableHeaderURL"
+                        style="@style/TableCellURLStyle"
+                        android:textColor="@color/colorWhite"
+                        android:layout_marginRight="@dimen/TableHorizontalMargin"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <TextView
+            android:layout_below="@+id/GalleryTitle"
+            android:id="@+id/DatabaseResponseGallery"
+            style="@style/DatabaseResponseStyle"/>
 
 </RelativeLayout>

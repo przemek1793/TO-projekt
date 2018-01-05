@@ -40,4 +40,8 @@
     <string name="DeleteMapsTitle">Usuwanie map</string>
     <string name="MapsTableHeaderName">Nazwa</string>
     <string name="MapsTableHeaderURL">Mapa</string>
+
+    <!-- GalleryActivity -->
+    <string name="GalleryTitle">Mapy miast</string>
+
 </resources>
