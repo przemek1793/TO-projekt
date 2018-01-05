@@ -179,6 +179,7 @@ public class DeleteMapsActivity extends Activity
                 intent.putExtra("MapURL", MapURL);
                 intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
+                finish();
             }
             else
             {
@@ -186,6 +187,7 @@ public class DeleteMapsActivity extends Activity
                 intent.putExtra("MapURL", "Niepoprawny");
                 intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
+                finish();
             }
         }
         catch (NullPointerException e)
