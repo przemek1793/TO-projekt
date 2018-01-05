@@ -97,7 +97,6 @@ public class DeleteMapsActivity extends Activity
                 if (jsonResponse.getInt("success")==1)
                 {
                     TableLayout table = (TableLayout) findViewById(R.id.TableDeleteMapData);
-                    RelativeLayout RelativeLayout = (RelativeLayout) findViewById(R.id.DeleteMapRelativeLayout);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
@@ -138,33 +137,33 @@ public class DeleteMapsActivity extends Activity
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+    ImageView bmImage;
 
-        public DownloadImageTask(ImageView bmImage)
-        {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-
-                mIcon11=BitmapFactory.decodeResource(DeleteMapsActivity.this.getResources(), R.drawable.error_obraz);
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result)
-        {
-            bmImage.setImageBitmap(result);
-        }
+    public DownloadImageTask(ImageView bmImage)
+    {
+        this.bmImage = bmImage;
     }
+
+    protected Bitmap doInBackground(String... urls) {
+        String urldisplay = urls[0];
+        Bitmap mIcon11 = null;
+        try {
+            InputStream in = new java.net.URL(urldisplay).openStream();
+            mIcon11 = BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+
+            mIcon11=BitmapFactory.decodeResource(DeleteMapsActivity.this.getResources(), R.drawable.error_obraz);
+        }
+        return mIcon11;
+    }
+
+    protected void onPostExecute(Bitmap result)
+    {
+        bmImage.setImageBitmap(result);
+    }
+}
 
     private void ZoomedIMage (ImageView URLImage, String MapURL)
     {
