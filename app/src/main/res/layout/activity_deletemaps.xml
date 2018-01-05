@@ -23,8 +23,7 @@
                     <TextView
                             android:text="@string/MapsTableHeaderName"
                             style="@style/TableCellNameStyle"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/table_border"/>
+                            android:layout_height="wrap_content"/>
                     <TextView
                             android:text="@string/MapsTableHeaderURL"
                             style="@style/TableCellURLStyle"

@@ -22,13 +22,11 @@
                 <TextView
                         android:text="@string/MapsTableHeaderName"
                         style="@style/TableCellNameStyle"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"/>
+                        android:layout_height="wrap_content"/>
                 <TextView
                         android:text="@string/MapsTableHeaderURL"
                         style="@style/TableCellURLStyle"
-                        android:textColor="@color/colorWhite"
-                        android:layout_marginRight="@dimen/TableHorizontalMargin"/>
+                        android:textColor="@color/colorWhite"/>
             </TableRow>
         </TableLayout>
     </ScrollView>
