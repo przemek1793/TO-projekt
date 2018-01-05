@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.example.przemek.to_atrakcja.R;
+import com.example.przemek.to_atrakcja.other.TouchImageView;
 
 import java.io.InputStream;
 
@@ -25,7 +26,7 @@ public class ExpandedURLImageActivity extends Activity
         setContentView(R.layout.activity_expanded_url_image);
         Intent intent = getIntent();
         MapURL = intent.getStringExtra("MapURL");
-        ImageView URLImage = (ImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
+        TouchImageView URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
         RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
 
