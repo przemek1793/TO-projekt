@@ -177,9 +177,20 @@ public class DeleteMapsActivity extends Activity
                 intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
             }
+            else
+            {
+                Intent intent = new Intent(this, ExpandedURLImageActivity.class);
+                intent.putExtra("MapURL", "Niepoprawny");
+                intent.putExtra("Cel", "Usuwanie");
+                startActivity(intent);
+            }
         }
         catch (NullPointerException e)
         {
+            Intent intent = new Intent(this, ExpandedURLImageActivity.class);
+            intent.putExtra("MapURL", "Niepoprawny");
+            intent.putExtra("Cel", "Usuwanie");
+            startActivity(intent);
         }
     }
 }

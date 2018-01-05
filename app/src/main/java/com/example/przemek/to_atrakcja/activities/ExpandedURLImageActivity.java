@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.example.przemek.to_atrakcja.R;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 public class ExpandedURLImageActivity extends Activity
 {
     String MapURL;
+    String cel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,8 +32,25 @@ public class ExpandedURLImageActivity extends Activity
         TouchImageView URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
         RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
+        cel = intent.getStringExtra("Cel");
+        Button przycisk = (Button) findViewById(R.id.ExpandedURLIMageButton);
+        if (cel.equals("Usuwanie"))
+        {
+            przycisk.setText("Usuń");
+        }
+        else
+        {
+            przycisk.setText("Ściągnij");
+        }
 
-        new ExpandedURLImageActivity.DownloadExtendedImageTask(URLImage).execute(MapURL);
+        if (MapURL.equals("Niepoprawny"))
+        {
+            URLImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.error_obraz));
+        }
+        else
+        {
+            new ExpandedURLImageActivity.DownloadExtendedImageTask(URLImage).execute(MapURL);
+        }
     }
 
     @Override
