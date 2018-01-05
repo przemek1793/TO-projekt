@@ -26,7 +26,7 @@ public class ExpandedURLImageActivity extends Activity
     private static String URL_delete_map = "http://192.168.0.13/delete_map.php";
     private static String URL_download_map = "http://192.168.0.13/download_map";
 
-    String cel, MapURL;
+    String cel, MapURL, CzyPoprawny;
     TouchImageView URLImage;
 
     @Override
@@ -35,7 +35,6 @@ public class ExpandedURLImageActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expanded_url_image);
         Intent intent = getIntent();
-        String CzyPoprawny;
         MapURL = intent.getStringExtra("MapURL");
         CzyPoprawny = intent.getStringExtra("CzyPoprawny");
         URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
@@ -65,8 +64,16 @@ public class ExpandedURLImageActivity extends Activity
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(ExpandedURLImageActivity.this, DeleteMapsActivity.class);
-        startActivity(intent);
+        if (cel.equals("Usuwanie"))
+        {
+            Intent intent = new Intent(ExpandedURLImageActivity.this, DeleteMapsActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(ExpandedURLImageActivity.this, GalleryActivity.class);
+            startActivity(intent);
+        }
         finish();
     }
 
@@ -111,6 +118,15 @@ public class ExpandedURLImageActivity extends Activity
 
     public void Download (View view)
     {
+        if (CzyPoprawny.equals("nie"))
+        {
+            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            TryToLogButton.setText("Nie można ściągać niepoprawnych plików");
+        }
+        else
+        {
+
+        }
     }
 
     class DeleteMap extends AsyncTask<String, String, String> {
@@ -197,8 +213,7 @@ public class ExpandedURLImageActivity extends Activity
                 else
                 {
                     Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
-                    TryToLogButton.setText(jsonResponse.getString("message"));
-                    //            TryToLogButton.setText("Bląd przy usuwaniu mapy");
+                    TryToLogButton.setText("Bląd przy usuwaniu mapy");
                 }
             }
             catch (JSONException e)
