@@ -19,7 +19,7 @@
     <dimen name="DatabaseResponseSize">16sp</dimen>
 
     <!-- DeleteMapsActivity -->
-    <dimen name="TableHorizontalMargin">16dp</dimen>
+    <dimen name="TableHorizontalMargin">7dp</dimen>
     <dimen name="TableVerticalMargin">16dp</dimen>
     <dimen name="TableRowPadding">5dp</dimen>
     <dimen name="TableRowNameWidth">120dp</dimen>

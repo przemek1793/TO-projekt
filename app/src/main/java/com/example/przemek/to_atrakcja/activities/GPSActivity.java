@@ -225,5 +225,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

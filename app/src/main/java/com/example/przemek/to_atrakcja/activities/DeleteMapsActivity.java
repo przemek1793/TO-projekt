@@ -39,6 +39,7 @@ public class DeleteMapsActivity extends Activity
     {
         Intent intent = new Intent(this, AdministratorActivity.class);
         startActivity(intent);
+        finish();
     }
 
     class PopulateTable extends AsyncTask<String, String, String> {
@@ -96,6 +97,7 @@ public class DeleteMapsActivity extends Activity
                 if (jsonResponse.getInt("success")==1)
                 {
                     TableLayout table = (TableLayout) findViewById(R.id.TableDeleteMapData);
+                    RelativeLayout RelativeLayout = (RelativeLayout) findViewById(R.id.DeleteMapRelativeLayout);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
@@ -103,14 +105,16 @@ public class DeleteMapsActivity extends Activity
                         TableRow row = (TableRow) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.map_table_row, null);
                         TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
                         ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
+                        ImageView URLExpanded = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_expanded_url_cell, null);
 
                         String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
                         TextName.setText(object.getString("NAME"));
-                        new DownloadImageTask(URLImage).execute(MapURL);
+                        new DownloadImageTask(URLImage, URLExpanded).execute(MapURL);
 
                         table.addView(row);
                         row.addView(TextName);
                         row.addView(URLImage);
+                        RelativeLayout.addView(URLExpanded);
                     }
                 }
                 else
@@ -129,9 +133,12 @@ public class DeleteMapsActivity extends Activity
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
+        ImageView bmImageExtended;
 
-        public DownloadImageTask(ImageView bmImage) {
+        public DownloadImageTask(ImageView bmImage, ImageView bmImageExtended)
+        {
             this.bmImage = bmImage;
+            this.bmImageExtended = bmImageExtended;
         }
 
         protected Bitmap doInBackground(String... urls) {
@@ -149,7 +156,9 @@ public class DeleteMapsActivity extends Activity
             return mIcon11;
         }
 
-        protected void onPostExecute(Bitmap result) {
+        protected void onPostExecute(Bitmap result)
+        {
+            bmImageExtended.setImageBitmap(result);
             bmImage.setImageBitmap(result);
         }
     }

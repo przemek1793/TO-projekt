@@ -20,6 +20,7 @@ public class ManageMapsActivity extends Activity
     {
         Intent intent = new Intent(this, AdministratorActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void AddMaps (View view)

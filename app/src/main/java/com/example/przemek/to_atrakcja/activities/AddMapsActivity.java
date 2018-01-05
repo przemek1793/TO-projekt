@@ -32,6 +32,7 @@ public class AddMapsActivity extends Activity
     {
         Intent intent = new Intent(this, AdministratorActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void TryToAddMap (View view)

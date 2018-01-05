@@ -22,6 +22,7 @@ public class AdministratorActivity extends Activity
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void Logout (View view)
