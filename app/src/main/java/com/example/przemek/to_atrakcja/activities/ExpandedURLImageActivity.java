@@ -1,11 +1,15 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +28,8 @@ import java.net.URL;
 public class ExpandedURLImageActivity extends Activity
 {
     private static String URL_delete_map = "http://192.168.0.13/delete_map.php";
-    private static String URL_download_map = "http://192.168.0.13/download_map";
 
-    String cel, MapURL, CzyPoprawny;
+    String cel, MapURL, CzyPoprawny,Name;
     TouchImageView URLImage;
 
     @Override
@@ -41,6 +44,7 @@ public class ExpandedURLImageActivity extends Activity
         RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
         cel = intent.getStringExtra("Cel");
+        Name = intent.getStringExtra("Name");
         Button przycisk = (Button) findViewById(R.id.ExpandedURLIMageButton);
         if (cel.equals("Usuwanie"))
         {
@@ -125,7 +129,7 @@ public class ExpandedURLImageActivity extends Activity
         }
         else
         {
-
+            new DownloadFromURL().execute();
         }
     }
 
@@ -220,6 +224,49 @@ public class ExpandedURLImageActivity extends Activity
             {
                 e.printStackTrace();
             }
+        }
+
+    }
+
+    class DownloadFromURL extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            TryToLogButton.setText("Ściąganie");
+        }
+
+        protected String doInBackground(String... args) {
+
+            File direct = new File(Environment.getExternalStorageDirectory() + "/AtrakcjaTO");
+
+            if (!direct.exists()) {
+                direct.mkdirs();
+            }
+
+            DownloadManager mgr = (DownloadManager) ExpandedURLImageActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
+
+            Uri downloadUri = Uri.parse(MapURL);
+            DownloadManager.Request request = new DownloadManager.Request(downloadUri);
+
+            request.setAllowedNetworkTypes(
+                    DownloadManager.Request.NETWORK_WIFI
+                            | DownloadManager.Request.NETWORK_MOBILE)
+                    .setAllowedOverRoaming(false).setTitle("Atrakcja")
+                    .setDescription("Atrakcja TO")
+                    .setDestinationInExternalPublicDir("/AtrakcjaTO", Name+ " map.jpg");
+
+            mgr.enqueue(request);
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            TryToLogButton.setText("Ściągnięto");
         }
 
     }

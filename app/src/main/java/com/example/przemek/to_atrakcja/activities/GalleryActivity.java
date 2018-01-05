@@ -111,12 +111,13 @@ public class GalleryActivity extends Activity
                         final ImageView URLImage = (ImageView) LayoutInflater.from(GalleryActivity.this).inflate(R.layout.table_url_cell, null);
 
                         final String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
-                        TextName.setText(object.getString("NAME"));
+                        final String Name =object.getString("NAME");
+                        TextName.setText(Name);
 
                         URLImage.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ZoomedIMage(URLImage,MapURL);
+                                ZoomedIMage(URLImage,MapURL,Name);
                             }
                         });
 
@@ -181,7 +182,7 @@ public class GalleryActivity extends Activity
         }
     }
 
-    private void ZoomedIMage (ImageView URLImage, String MapURL)
+    private void ZoomedIMage (ImageView URLImage, String MapURL, String Name)
     {
         Bitmap bitmap = ((BitmapDrawable)URLImage.getDrawable()).getBitmap();
         try
@@ -192,6 +193,7 @@ public class GalleryActivity extends Activity
                 intent.putExtra("MapURL", MapURL);
                 intent.putExtra("CzyPoprawny", "tak");
                 intent.putExtra("Cel", "Ściągnij");
+                intent.putExtra("Name", Name);
                 startActivity(intent);
                 finish();
             }
@@ -201,6 +203,7 @@ public class GalleryActivity extends Activity
                 intent.putExtra("MapURL", MapURL);
                 intent.putExtra("CzyPoprawny", "nie");
                 intent.putExtra("Cel", "Ściągnij");
+                intent.putExtra("Name", Name);
                 startActivity(intent);
                 finish();
             }
@@ -211,6 +214,7 @@ public class GalleryActivity extends Activity
             intent.putExtra("MapURL", MapURL);
             intent.putExtra("CzyPoprawny", "nie");
             intent.putExtra("Cel", "Ściągnij");
+            intent.putExtra("Name", Name);
             startActivity(intent);
         }
     }
