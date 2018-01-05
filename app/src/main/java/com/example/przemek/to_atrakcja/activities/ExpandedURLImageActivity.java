@@ -35,7 +35,9 @@ public class ExpandedURLImageActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expanded_url_image);
         Intent intent = getIntent();
+        String CzyPoprawny;
         MapURL = intent.getStringExtra("MapURL");
+        CzyPoprawny = intent.getStringExtra("CzyPoprawny");
         URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
         RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
@@ -50,7 +52,7 @@ public class ExpandedURLImageActivity extends Activity
             przycisk.setText("Ściągnij");
         }
 
-        if (MapURL.equals("Niepoprawny"))
+        if (CzyPoprawny.equals("nie"))
         {
             URLImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.error_obraz));
         }
@@ -194,8 +196,9 @@ public class ExpandedURLImageActivity extends Activity
                 }
                 else
                 {
-                    Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
-                    TryToLogButton.setText("Bląd przy usuwaniu mapy");
+                    Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+                    TryToLogButton.setText(jsonResponse.getString("message"));
+                    //            TryToLogButton.setText("Bląd przy usuwaniu mapy");
                 }
             }
             catch (JSONException e)

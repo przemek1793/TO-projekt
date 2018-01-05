@@ -123,8 +123,15 @@ public class DeleteMapsActivity extends Activity
                 }
                 else
                 {
-                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddMap);
-                    DatabaseResponse.setText(jsonResponse.getString("message"));
+                    try
+                    {
+                        TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddMap);
+                        DatabaseResponse.setText(jsonResponse.getString("message"));
+                    }
+                    catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
             }
             catch (JSONException e)
@@ -177,6 +184,7 @@ public class DeleteMapsActivity extends Activity
             {
                 Intent intent = new Intent(this, ExpandedURLImageActivity.class);
                 intent.putExtra("MapURL", MapURL);
+                intent.putExtra("CzyPoprawny", "tak");
                 intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
                 finish();
@@ -184,7 +192,8 @@ public class DeleteMapsActivity extends Activity
             else
             {
                 Intent intent = new Intent(this, ExpandedURLImageActivity.class);
-                intent.putExtra("MapURL", "Niepoprawny");
+                intent.putExtra("MapURL", MapURL);
+                intent.putExtra("CzyPoprawny", "nie");
                 intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
                 finish();
@@ -193,7 +202,8 @@ public class DeleteMapsActivity extends Activity
         catch (NullPointerException e)
         {
             Intent intent = new Intent(this, ExpandedURLImageActivity.class);
-            intent.putExtra("MapURL", "Niepoprawny");
+            intent.putExtra("MapURL", MapURL);
+            intent.putExtra("CzyPoprawny", "nie");
             intent.putExtra("Cel", "Usuwanie");
             startActivity(intent);
         }
