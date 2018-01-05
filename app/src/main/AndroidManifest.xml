@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".activities.DeleteMapsActivity">
         </activity>
+        <activity android:name=".activities.ExpandedURLImageActivity">
+        </activity>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyC9bEfku65mhRHw7qU3Z3bomjsccMd-bLQ"/>

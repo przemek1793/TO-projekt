@@ -1,12 +1,15 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.*;
 import com.example.przemek.to_atrakcja.R;
 import org.json.JSONArray;
@@ -101,10 +104,18 @@ public class DeleteMapsActivity extends Activity
                         JSONObject object = jsonrzedy.getJSONObject(n);
                         TableRow row = (TableRow) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.map_table_row, null);
                         TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
-                        ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
+                        final ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
 
-                        String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
+                        final String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
                         TextName.setText(object.getString("NAME"));
+
+                        URLImage.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ZoomedIMage(URLImage,MapURL);
+                            }
+                        });
+
                         new DownloadImageTask(URLImage).execute(MapURL);
 
                         table.addView(row);
@@ -152,6 +163,23 @@ public class DeleteMapsActivity extends Activity
         protected void onPostExecute(Bitmap result)
         {
             bmImage.setImageBitmap(result);
+        }
+    }
+
+    private void ZoomedIMage (ImageView URLImage, String MapURL)
+    {
+        Bitmap bitmap = ((BitmapDrawable)URLImage.getDrawable()).getBitmap();
+        try
+        {
+            if (!bitmap.sameAs(BitmapFactory.decodeResource(DeleteMapsActivity.this.getResources(), R.drawable.error_obraz)))
+            {
+                Intent intent = new Intent(this, ExpandedURLImageActivity.class);
+                intent.putExtra("MapURL", MapURL);
+                startActivity(intent);
+            }
+        }
+        catch (NullPointerException e)
+        {
         }
     }
 }
