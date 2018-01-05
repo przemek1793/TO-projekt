@@ -19,7 +19,6 @@ import java.io.InputStream;
 
 public class ExpandedURLImageActivity extends Activity
 {
-    String MapURL;
     String cel;
 
     @Override
@@ -28,7 +27,7 @@ public class ExpandedURLImageActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expanded_url_image);
         Intent intent = getIntent();
-        MapURL = intent.getStringExtra("MapURL");
+        String MapURL = intent.getStringExtra("MapURL");
         TouchImageView URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
         RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
@@ -88,6 +87,14 @@ public class ExpandedURLImageActivity extends Activity
 
     public void ExpandedURLImageButtonAction (View view)
     {
+        if (cel.equals("Usuwanie"))
+        {
+            Delete(view);
+        }
+        else
+        {
+            Download(view);
+        }
     }
 
     public void Delete (View view)

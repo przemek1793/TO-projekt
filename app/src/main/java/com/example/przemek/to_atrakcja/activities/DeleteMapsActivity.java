@@ -26,7 +26,6 @@ import java.net.URL;
 public class DeleteMapsActivity extends Activity
 {
     private static String URL_get_maps = "http://192.168.0.13/get_maps.php";
-    private static String URL_delete_map = "http://192.168.0.13/delete_map.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -150,6 +149,10 @@ public class DeleteMapsActivity extends Activity
         try {
             InputStream in = new java.net.URL(urldisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
+            if (mIcon11==null)
+            {
+                mIcon11=BitmapFactory.decodeResource(DeleteMapsActivity.this.getResources(), R.drawable.error_obraz);
+            }
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
