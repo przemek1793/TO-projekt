@@ -1,7 +1,6 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -37,8 +36,8 @@ public class DeleteMapsActivity extends Activity
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(this, AdministratorActivity.class);
-        startActivity(intent);
+    //    Intent intent = new Intent(this, AdministratorActivity.class);
+    //    startActivity(intent);
         finish();
     }
 
@@ -105,16 +104,14 @@ public class DeleteMapsActivity extends Activity
                         TableRow row = (TableRow) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.map_table_row, null);
                         TextView TextName = (TextView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_name_cell, null);
                         ImageView URLImage = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_url_cell, null);
-                        ImageView URLExpanded = (ImageView) LayoutInflater.from(DeleteMapsActivity.this).inflate(R.layout.table_expanded_url_cell, null);
 
                         String MapURL = object.getString("MAPURL").replaceAll("ǤЖ","\\.");
                         TextName.setText(object.getString("NAME"));
-                        new DownloadImageTask(URLImage, URLExpanded).execute(MapURL);
+                        new DownloadImageTask(URLImage).execute(MapURL);
 
                         table.addView(row);
                         row.addView(TextName);
                         row.addView(URLImage);
-                        RelativeLayout.addView(URLExpanded);
                     }
                 }
                 else
@@ -133,12 +130,10 @@ public class DeleteMapsActivity extends Activity
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
-        ImageView bmImageExtended;
 
-        public DownloadImageTask(ImageView bmImage, ImageView bmImageExtended)
+        public DownloadImageTask(ImageView bmImage)
         {
             this.bmImage = bmImage;
-            this.bmImageExtended = bmImageExtended;
         }
 
         protected Bitmap doInBackground(String... urls) {
@@ -158,7 +153,6 @@ public class DeleteMapsActivity extends Activity
 
         protected void onPostExecute(Bitmap result)
         {
-            bmImageExtended.setImageBitmap(result);
             bmImage.setImageBitmap(result);
         }
     }
