@@ -174,6 +174,7 @@ public class DeleteMapsActivity extends Activity
             {
                 Intent intent = new Intent(this, ExpandedURLImageActivity.class);
                 intent.putExtra("MapURL", MapURL);
+                intent.putExtra("Cel", "Usuwanie");
                 startActivity(intent);
             }
         }

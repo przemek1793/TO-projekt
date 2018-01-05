@@ -9,7 +9,8 @@
             android:id="@+id/ExpandedURLIMageButton"
             style="@style/MenuButtonStyle"
             android:onClick="ExpandedURLImageButtonAction"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:gravity="center"
     />
 

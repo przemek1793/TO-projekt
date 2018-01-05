@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.example.przemek.to_atrakcja.R;
@@ -64,5 +65,17 @@ public class ExpandedURLImageActivity extends Activity
         {
             bmImage.setImageBitmap(result);
         }
+    }
+
+    public void ExpandedURLImageButtonAction (View view)
+    {
+    }
+
+    public void Delete (View view)
+    {
+    }
+
+    public void Download (View view)
+    {
     }
 }
