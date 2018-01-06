@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import com.example.przemek.to_atrakcja.R;
 
-public class ManagePLacesActivity extends Activity
+public class AddPlacesActivity extends Activity
 {
+    private static String URL_add_place = "http://192.168.0.13/add_place.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_places);
+        setContentView(R.layout.activity_add_places);
     }
 
     @Override
@@ -27,16 +29,7 @@ public class ManagePLacesActivity extends Activity
         startActivity(intent);
     }
 
-    public void AddPLacesCurrent (View view)
+    public void TryToAddPlace (View view)
     {
     }
-
-    public void AddPLacesMap (View view)
-    {
-    }
-
-    public void ManagePlacesAdmin (View view)
-    {
-    }
-
 }
