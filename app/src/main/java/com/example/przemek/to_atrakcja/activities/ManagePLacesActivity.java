@@ -29,11 +29,10 @@ public class ManagePLacesActivity extends Activity
 
     public void AddPLacesCurrent (View view)
     {
+        Intent intent = new Intent(this, AddCurrentPlaceActivity.class);
+        startActivity(intent);
     }
 
-    public void AddPLacesMap (View view)
-    {
-    }
 
     public void ManagePlacesAdmin (View view)
     {

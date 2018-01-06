@@ -1,6 +1,8 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.przemek.to_atrakcja.R;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,15 +19,18 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AddPlacesActivity extends Activity
+public class AddCurrentPlaceActivity extends Activity implements LocationListener
 {
+    LocationManager lm;
+    Location location1;
+    GoogleApiClient mGoogleApiClient;
     private static String URL_add_place = "http://192.168.0.13/add_place.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_places);
+        setContentView(R.layout.activity_add_current_place);
     }
 
     @Override
@@ -32,9 +39,15 @@ public class AddPlacesActivity extends Activity
         finish();
     }
 
-    public void TryToAddPlace (View view)
+    public void TryToAddCurrentPlace (View view)
     {
         new AddPlace().execute();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if(location!=null){
+            location1 =location ; }
     }
 
     class AddPlace extends AsyncTask<String, String, String> {
@@ -45,7 +58,7 @@ public class AddPlacesActivity extends Activity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddPlaceButton);
+            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddCurrentPlaceButton);
             TryToAddPlaceButton.setText("Dodawanie miejsca");
         }
 
@@ -56,13 +69,27 @@ public class AddPlacesActivity extends Activity
             OutputStream os;
             try {
                 String message;
-                EditText InputPlaceName=findViewById(R.id.InputPlaceName);
-                EditText InputPlaceType=findViewById(R.id.InputPlaceType);
-                EditText InputPlaceOpeningHour=findViewById(R.id.InputPlaceOpeningHour);
-                EditText InputPlaceClosingHours=findViewById(R.id.InputPlaceClosingHours);
-                EditText InputPlaceDescription=findViewById(R.id.InputPlaceDescription);
-                EditText InputPLaceLongitude=findViewById(R.id.InputPLaceLongitude);
-                EditText InputPlaceLatitude=findViewById(R.id.InputPlaceLatitude);
+                EditText InputPlaceName=findViewById(R.id.InputCurrentPlaceName);
+                EditText InputPlaceType=findViewById(R.id.InputCurrentPlaceType);
+                EditText InputPlaceOpeningHour=findViewById(R.id.InputCurrentPlaceOpeningHour);
+                EditText InputPlaceClosingHours=findViewById(R.id.InputCurrentPlaceClosingHours);
+                EditText InputPlaceDescription=findViewById(R.id.InputCurrentPlaceDescription);
+                double latitude,longitude;
+
+                Location currentLocation=location1;
+
+                try
+                {
+                    longitude = location1.getLongitude();
+                    latitude = location1.getLatitude();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    longitude = 0;
+                    latitude = 0;
+                }
+
 
                 String Description=InputPlaceDescription.getText().toString();
                 Description=Description.replaceAll("\\.","ǤЖ");
@@ -70,11 +97,20 @@ public class AddPlacesActivity extends Activity
                 String hours=InputPlaceOpeningHour.getText().toString()+ "-"  + InputPlaceClosingHours.getText().toString();
                 hours=hours.replaceAll("\\.","ǤЖ");
 
-                String Latitude = InputPlaceLatitude.getText().toString();
-                Latitude=Latitude.replaceAll("\\.","ǤЖ");
-                String Longitude = InputPLaceLongitude.getText().toString();
-                Longitude=Longitude.replaceAll("\\.","ǤЖ");
+                String Latitude,Longitude;
 
+                if (latitude!=0 || longitude!=0)
+                {
+                    Latitude = String.valueOf(latitude);
+                    Latitude=Latitude.replaceAll("\\.","ǤЖ");
+                    Longitude = String.valueOf(longitude);
+                    Longitude=Longitude.replaceAll("\\.","ǤЖ");
+                }
+                else
+                {
+                    Latitude="brak";
+                    Longitude="brak";
+                }
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("Name", InputPlaceName.getText().toString());
                 jsonObject.put("Type", InputPlaceType.getText().toString());
@@ -135,14 +171,14 @@ public class AddPlacesActivity extends Activity
          * **/
         protected void onPostExecute(String file_url) {
             try {
-                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddPlace);
+                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddPlaceCurrent);
                 DatabaseResponse.setText(jsonResponse.getString("message"));
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddPlaceButton);
+            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddCurrentPlaceButton);
             TryToAddPlaceButton.setText("Dodaj miejsce");
         }
 

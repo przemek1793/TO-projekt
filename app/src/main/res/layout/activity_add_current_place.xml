@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/RelativeLayoutStyle"
+                tools:context="com.example.przemek.to_atrakcja.activities.AddCurrentPlaceActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+            <TextView
+                    style="@style/TitleStyle"
+                    android:id="@+id/AddCurrentPLace"
+                    android:text="@string/AddPLace"/>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/AddCurrentPLace"
+                    android:id="@+id/TextInputCurrentPLaceName">
+                <EditText android:id="@+id/InputCurrentPlaceName"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceNameHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputCurrentPLaceName"
+                    android:id="@+id/TextInputCurrentPLaceType">
+                <EditText android:id="@+id/InputCurrentPlaceType"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceTypeHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputCurrentPLaceType"
+                    android:id="@+id/TextInputCurrentPlaceOpeningHour">
+                <EditText android:id="@+id/InputCurrentPlaceOpeningHour"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="time"
+                          android:hint="@string/PlaceOpeningHoursHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputCurrentPlaceOpeningHour"
+                    android:id="@+id/TextInputCurrentPlaceClosingHours">
+                <EditText android:id="@+id/InputCurrentPlaceClosingHours"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="time"
+                          android:hint="@string/PlaceClosingHoursHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputCurrentPlaceClosingHours"
+                    android:id="@+id/TextInputCurrentPlaceDescription">
+                <EditText android:id="@+id/InputCurrentPlaceDescription"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceDescriptionHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                    android:layout_below="@+id/TextInputCurrentPlaceDescription"
+                    android:id="@+id/DatabaseResponseAddPlaceCurrent"
+                    style="@style/DatabaseResponseStyle"/>
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TryToAddCurrentPlaceButton"
+                    style="@style/MenuButtonStyle"
+                    android:text="@string/TryToAddPlace"
+                    android:onClick="TryToAddCurrentPlace"
+                    android:layout_below="@+id/DatabaseResponseAddPlaceCurrent"
+            />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>
