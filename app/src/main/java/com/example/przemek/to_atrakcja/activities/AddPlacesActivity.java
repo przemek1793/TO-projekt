@@ -41,7 +41,7 @@ public class AddPlacesActivity extends Activity
 
     public void TryToAddPlace (View view)
     {
-   //     new AddPlace().execute();
+        new AddPlace().execute();
     }
 
     class AddPlace extends AsyncTask<String, String, String> {
@@ -64,6 +64,7 @@ public class AddPlacesActivity extends Activity
             try {
                 String message;
                 EditText InputPlaceName=findViewById(R.id.InputPlaceName);
+                EditText InputPlaceType=findViewById(R.id.InputPlaceType);
                 EditText InputPlaceOpeningHour=findViewById(R.id.InputPlaceOpeningHour);
                 EditText InputPlaceClosingHours=findViewById(R.id.InputPlaceClosingHours);
                 EditText InputPlaceDescription=findViewById(R.id.InputPlaceDescription);
@@ -73,14 +74,21 @@ public class AddPlacesActivity extends Activity
                 String Description=InputPlaceDescription.getText().toString();
                 Description=Description.replaceAll("\\.","ǤЖ");
 
+                String hours=InputPlaceOpeningHour.getText().toString()+ "-"  + InputPlaceClosingHours.getText().toString();
+                hours=hours.replaceAll("\\.","ǤЖ");
 
+                String Latitude = InputPlaceLatitude.getText().toString();
+                Latitude=Latitude.replaceAll("\\.","ǤЖ");
+                String Longitude = InputPLaceLongitude.getText().toString();
+                Longitude=Longitude.replaceAll("\\.","ǤЖ");
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("Name", InputPlaceName.getText().toString());
+                jsonObject.put("Type", InputPlaceType.getText().toString());
+                jsonObject.put("Hours", hours);
                 jsonObject.put("Description", Description);
-                jsonObject.put("Description", Description);
-                jsonObject.put("Description", Description);
-                jsonObject.put("Description", Description);
+                jsonObject.put("Latitude", Latitude);
+                jsonObject.put("Longitude", Longitude);
                 message = jsonObject.toString();
 
                 url=new URL(URL_add_place);
@@ -134,15 +142,15 @@ public class AddPlacesActivity extends Activity
          * **/
         protected void onPostExecute(String file_url) {
             try {
-                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddMap);
+                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddPlace);
                 DatabaseResponse.setText(jsonResponse.getString("message"));
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            Button TryToLogButton=(Button)findViewById(R.id.TryToAddMapButton);
-            TryToLogButton.setText("Dodaj mapę");
+            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddPlaceButton);
+            TryToAddPlaceButton.setText("Dodaj miejsce");
         }
 
     }
