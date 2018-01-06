@@ -53,6 +53,7 @@
     <!-- AddPLacesActivity -->
     <string name="AddPLace">Dodawanie miejsca</string>
     <string name="PlaceNameHint">Nazwa miejsca</string>
+    <string name="PlaceTypeHint">Typ miejsca</string>
     <string name="PlaceOpeningHoursHint">Godzina otwarcia</string>
     <string name="PlaceClosingHoursHint">Godzina zamkniecia</string>
     <string name="PlaceDescriptionHint">Krótki opis</string>
