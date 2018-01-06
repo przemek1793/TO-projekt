@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/RelativeLayoutStyle"
+                tools:context="com.example.przemek.to_atrakcja.activities.ManagePLacesActivity">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddPlacesData"
+                style="@style/MenuButtonStyle"
+                android:text="@string/AddPlacesData"
+                android:onClick="AddPlacesData"
+        />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddPLacesCurrent"
+                style="@style/MenuButtonStyle"
+                android:text="@string/AddPLacesCurrent"
+                android:layout_below="@+id/AddPlacesData"
+                android:onClick="AddPLacesCurrent"
+        />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddPLacesMap"
+                style="@style/MenuButtonStyle"
+                android:text="@string/AddPLacesMap"
+                android:layout_below="@+id/AddPLacesCurrent"
+                android:onClick="AddPLacesMap"
+        />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ManagePlacesAdmin"
+                style="@style/MenuButtonStyle"
+                android:text="@string/ManagePlacesAdmin"
+                android:layout_below="@+id/AddPLacesMap"
+                android:onClick="ManagePlacesAdmin"
+        />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -44,4 +44,10 @@
     <!-- GalleryActivity -->
     <string name="GalleryTitle">Mapy miast</string>
 
+    <!-- ManagePlacesActivity -->
+    <string name="AddPlacesData">Dodaj nowe miejsce</string>
+    <string name="AddPLacesCurrent">Dodaj nowe miejsce o współrzędnych w których się teraz znajdujesz</string>
+    <string name="AddPLacesMap">Dodaj nowe miejsce poprzez kliknięcie na mapie</string>
+    <string name="ManagePlacesAdmin">Zarządzaj istniejącymi miejscami</string>
+
 </resources>

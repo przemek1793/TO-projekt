@@ -30,6 +30,7 @@
                 style="@style/MenuButtonStyle"
                 android:text="@string/ManagePlaces"
                 android:layout_below="@+id/ManageMaps"
+                android:onClick="ManageMarkers"
         />
     </RelativeLayout>
 

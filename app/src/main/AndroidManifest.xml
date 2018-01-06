@@ -35,6 +35,8 @@
         </activity>
         <activity android:name=".activities.ExpandedURLImageActivity">
         </activity>
+        <activity android:name=".activities.ManagePLacesActivity">
+        </activity>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyC9bEfku65mhRHw7qU3Z3bomjsccMd-bLQ"/>
