@@ -27,16 +27,26 @@
             <android.support.design.widget.TextInputLayout
                     style="@style/TextInputLayoutStyle"
                     android:layout_below="@+id/TextInputPLaceName"
-                    android:id="@+id/TextInputPlaceHours">
-                <EditText android:id="@+id/InputPlaceHours"
+                    android:id="@+id/TextInputPlaceOpeningHour">
+                <EditText android:id="@+id/InputPlaceOpeningHour"
                           style="@style/TextInputEditTextStyle"
-                          android:inputType="text"
-                          android:hint="@string/PlaceHoursHint" />
+                          android:inputType="time"
+                          android:hint="@string/PlaceOpeningHoursHint" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                     style="@style/TextInputLayoutStyle"
-                    android:layout_below="@+id/TextInputPlaceHours"
+                    android:layout_below="@+id/TextInputPlaceOpeningHour"
+                    android:id="@+id/TextInputPlaceClosingHours">
+                <EditText android:id="@+id/InputPlaceClosingHours"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="time"
+                          android:hint="@string/PlaceOpeningHoursHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPlaceClosingHours"
                     android:id="@+id/TextInputPlaceDescription">
                 <EditText android:id="@+id/InputPlaceDescription"
                           style="@style/TextInputEditTextStyle"
@@ -50,7 +60,7 @@
                     android:id="@+id/TextInputPlaceLongitude">
                 <EditText android:id="@+id/InputPLaceLongitude"
                           style="@style/TextInputEditTextStyle"
-                          android:inputType="text"
+                          android:inputType="numberDecimal|numberSigned"
                           android:hint="@string/PlaceLongitudeHint" />
             </android.support.design.widget.TextInputLayout>
 
@@ -60,7 +70,7 @@
                     android:id="@+id/TextInputPlaceLatitude">
                 <EditText android:id="@+id/InputPlaceLatitude"
                           style="@style/TextInputEditTextStyle"
-                          android:inputType="text"
+                          android:inputType="numberDecimal|numberSigned"
                           android:hint="@string/PlaceLatitudeHint" />
             </android.support.design.widget.TextInputLayout>
 
