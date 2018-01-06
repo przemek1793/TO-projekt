@@ -1,9 +1,12 @@
 package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -26,6 +29,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by Przemek on 27.11.2017.
@@ -35,6 +44,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    private static String URL_add_place = "http://192.168.0.13/add_place.php";
     private FusedLocationProviderClient FusedLocationClient;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
@@ -42,6 +52,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker;
+    LatLng PlaceLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +176,19 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
             buildGoogleApiClient();
             mGoogleMap.setMyLocationEnabled(true);
         }
+        mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
+            @Override
+            public void onMapClick(LatLng point) {
+                SharedPreferences sharedPreferences = GPSActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
+                String zalogowano = sharedPreferences.getString("Zalogowano?","nie");
+                if (zalogowano.equals("tak"))
+                {
+                    PlaceLocation=point;
+                    new AddPlace().execute();
+                }
+            }
+        });
     }
 
     @Override
@@ -223,5 +247,78 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     public void onBackPressed()
     {
         finish();
+    }
+
+    class AddPlace extends AsyncTask<String, String, String> {
+
+        JSONObject jsonResponse;
+        String response;
+
+        protected String doInBackground(String... args) {
+
+            URL url;
+            HttpURLConnection urlConnection = null;
+            OutputStream os;
+            try {
+                String message;
+                double latitude,longitude;
+
+                try
+                {
+                    longitude = PlaceLocation.longitude;
+                    latitude = PlaceLocation.latitude;
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    longitude = 0;
+                    latitude = 0;
+                }
+
+                String Latitude,Longitude;
+
+                if (latitude!=0 || longitude!=0)
+                {
+                    Latitude = String.valueOf(latitude);
+                    Latitude=Latitude.replaceAll("\\.","ǤЖ");
+                    Longitude = String.valueOf(longitude);
+                    Longitude=Longitude.replaceAll("\\.","ǤЖ");
+                }
+                else
+                {
+                    Latitude="brak";
+                    Longitude="brak";
+                }
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("Latitude", Latitude);
+                jsonObject.put("Longitude", Longitude);
+                message = jsonObject.toString();
+
+                url=new URL(URL_add_place);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+                urlConnection.setDoInput(true);
+                urlConnection.setFixedLengthStreamingMode(message.getBytes().length);
+
+                urlConnection.connect();
+
+                OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
+
+                os = new BufferedOutputStream(urlConnection.getOutputStream());
+                os.write(message.getBytes("UTF-8"));
+
+                os.flush();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
     }
 }
