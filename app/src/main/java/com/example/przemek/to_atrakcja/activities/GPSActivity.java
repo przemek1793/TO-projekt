@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,6 +46,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         LocationListener {
 
     private static String URL_add_place = "http://192.168.0.13/add_place.php";
+    private static String URL_get_places = "http://192.168.0.13/get_places.php";
     private FusedLocationProviderClient FusedLocationClient;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
@@ -62,6 +64,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        new PopulateMapWithMarkers().execute();
 
     }
 
@@ -318,6 +321,79 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                 e.printStackTrace();
             }
             return null;
+        }
+    }
+
+    class PopulateMapWithMarkers extends AsyncTask<String, String, String> {
+
+        JSONObject jsonResponse;
+        String response;
+
+        protected String doInBackground(String... args) {
+
+            URL url;
+            HttpURLConnection urlConnection = null;
+            try {
+                url=new URL(URL_get_places);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoInput(true);
+
+                urlConnection.connect();
+
+                urlConnection.getResponseMessage();
+                urlConnection.getResponseCode();
+
+                InputStreamReader aa= new InputStreamReader((urlConnection.getInputStream()));
+                BufferedReader br = new BufferedReader(aa);
+
+                String line;
+                StringBuilder sb = new StringBuilder();
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                response=sb.toString();
+                br.close();
+
+                urlConnection.disconnect();
+
+                jsonResponse = new JSONObject(response) ;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            try
+            {
+                if (jsonResponse.getInt("success")==1)
+                {
+                    JSONArray markers=(JSONArray ) jsonResponse.get("Places");
+                    for(int n = 0; n < markers.length(); n++)
+                    {
+                        JSONObject object = markers.getJSONObject(n);
+                        double latitude = Double.parseDouble(object.getString("Latitude").replaceAll("ǤЖ","\\."));
+                        double longitude = Double.parseDouble(object.getString("Longitude").replaceAll("ǤЖ","\\."));
+                        String nazwa = object.getString("NAME").replaceAll("ǤЖ","\\.");
+                        LatLng pozycja = new LatLng(latitude,longitude);
+                        mGoogleMap.addMarker(new MarkerOptions().position(pozycja).title(nazwa));
+                    }
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
         }
 
     }
