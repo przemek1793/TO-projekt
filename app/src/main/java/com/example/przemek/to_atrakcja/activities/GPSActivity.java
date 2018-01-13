@@ -11,11 +11,13 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -188,14 +190,30 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
             @Override
             public void onMapClick(LatLng point) {
+                final LatLng punkt=point;
                 SharedPreferences sharedPreferences = GPSActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
                 String zalogowano = sharedPreferences.getString("Zalogowano?","nie");
                 if (zalogowano.equals("tak"))
                 {
-                    PlaceLocation=point;
-                    new AddPlace().execute();
-                    android.os.SystemClock.sleep(1000);
-                    new PopulateMapWithMarkers().execute();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(GPSActivity.this, R.style.MyDialogTheme);
+                    dialog.setTitle("Dodawanie znacznika");
+                    dialog.setMessage("Czy chcesz dodać nowy znacznik w miejscu które kliknąłeś");
+                    dialog.setNegativeButton("Nie", null);
+                    dialog.setPositiveButton("Tak", new DialogInterface.OnClickListener()
+                    {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            PlaceLocation=punkt;
+                            new AddPlace().execute();
+                            android.os.SystemClock.sleep(1000);
+                            new PopulateMapWithMarkers().execute();
+                        }
+                    });
+                    dialog.show();
+
+
                 }
             }
         });
@@ -407,6 +425,8 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
     class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
     {
+        private Context context;
+
         @Override
         public View getInfoWindow(Marker arg0) {
             return null;
@@ -432,6 +452,20 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
             info.addView(title);
             info.addView(snippet);
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(GPSActivity.this);
+            String zalogowano = prefs.getString("Zalogowano?","nie");
+            if (zalogowano.equals("tak"))
+            {
+                Button edytuj=new Button(context);
+                edytuj.setText("edytuj");
+
+                Button usun=new Button(context);
+                usun.setText("usun");
+
+                info.addView(edytuj);
+                info.addView(usun);
+            }
 
             return info;
         }

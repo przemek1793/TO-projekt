@@ -41,6 +41,8 @@
         </activity>
         <activity android:name=".activities.AddCurrentPlaceActivity">
         </activity>
+        <activity android:name=".activities.EditPlaceActivity">
+        </activity>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyC9bEfku65mhRHw7qU3Z3bomjsccMd-bLQ"/>
