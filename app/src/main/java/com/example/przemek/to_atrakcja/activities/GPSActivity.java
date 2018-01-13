@@ -3,6 +3,7 @@ package com.example.przemek.to_atrakcja.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -16,7 +17,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +52,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
     private static String URL_add_place = "http://192.168.0.13/add_place.php";
     private static String URL_get_places = "http://192.168.0.13/get_places.php";
+    private static String URL_delete_places = "http://192.168.0.13/delete_place.php";
     private FusedLocationProviderClient FusedLocationClient;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
@@ -165,6 +166,21 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     public void onMapReady(GoogleMap map) {
         mGoogleMap=map;
         mGoogleMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+        mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                SharedPreferences sharedPreferences = GPSActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
+                String zalogowano = sharedPreferences.getString("Zalogowano?","nie");
+                if (zalogowano.equals("tak"))
+                {
+                    Intent intent = new Intent(GPSActivity.this, EditPlaceActivity.class);
+                    intent.putExtra("pozycja",marker.getPosition());
+                    intent.putExtra("nazwa",marker.getTitle());
+                    startActivity(intent);
+                }
+            }
+        });
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
@@ -412,15 +428,13 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
     class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
     {
-        private Context context;
-
         @Override
         public View getInfoWindow(Marker arg0) {
             return null;
         }
 
         @Override
-        public View getInfoContents(Marker marker) {
+        public View getInfoContents(final Marker marker) {
 
             Context context = getApplicationContext(); //or getActivity(), YourActivity.this, etc.
 
@@ -440,23 +454,8 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
             info.addView(title);
             info.addView(snippet);
 
-            SharedPreferences sharedPreferences = GPSActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
-            String zalogowano = sharedPreferences.getString("Zalogowano?","nie");
-            if (zalogowano.equals("tak"))
-            {
-                Button edytuj=new Button(context);
-                edytuj.setText("edytuj");
-                edytuj.setBackgroundColor(Color.WHITE);
-
-                Button usun=new Button(context);
-                usun.setText("usun");
-                usun.setBackgroundColor(Color.WHITE);
-
-                info.addView(edytuj);
-                info.addView(usun);
-            }
-
             return info;
         }
     }
+
 }
