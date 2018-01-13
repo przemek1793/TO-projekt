@@ -34,21 +34,11 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/Places"
-            style="@style/MenuButtonStyle"
-            android:text="@string/Places"
-            android:onClick="Places"
-            android:layout_below="@+id/Gallery"
-    />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/Options"
             style="@style/MenuButtonStyle"
             android:text="@string/Options"
             android:onClick="Options"
-            android:layout_below="@+id/Places"
+            android:layout_below="@+id/Gallery"
     />
 
     <Button

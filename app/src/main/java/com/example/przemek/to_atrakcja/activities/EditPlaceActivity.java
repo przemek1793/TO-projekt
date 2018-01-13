@@ -143,7 +143,16 @@ public class EditPlaceActivity extends Activity
                     String nazwa = object.getString("Name").replaceAll("ǤЖ","\\.");
 
                     String[] godziny =  hours.split("-");
-                    String openingHours=godziny[0];
+                    String openingHours;
+                    if (godziny.length>0)
+                    {
+                        openingHours=godziny[0];
+                    }
+                    else
+                    {
+                        openingHours="";
+                    }
+
                     String closingHours;
                     if (godziny.length>1)
                     {
