@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -12,7 +14,10 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.przemek.to_atrakcja.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -65,7 +70,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         new PopulateMapWithMarkers().execute();
-
     }
 
     @Override
@@ -160,6 +164,7 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap map) {
         mGoogleMap=map;
+        mGoogleMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
@@ -384,9 +389,10 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                         JSONObject object = markers.getJSONObject(n);
                         double latitude = Double.parseDouble(object.getString("Latitude").replaceAll("ǤЖ","\\."));
                         double longitude = Double.parseDouble(object.getString("Longitude").replaceAll("ǤЖ","\\."));
+                        String snippet = object.getString("Hours").replaceAll("ǤЖ","\\.") + "\n" + object.getString("Description").replaceAll("ǤЖ","\\.");
                         String nazwa = object.getString("NAME").replaceAll("ǤЖ","\\.");
                         LatLng pozycja = new LatLng(latitude,longitude);
-                        mGoogleMap.addMarker(new MarkerOptions().position(pozycja).title(nazwa));
+                        mGoogleMap.addMarker(new MarkerOptions().position(pozycja).title(nazwa).snippet(snippet));
                     }
                 }
             }
@@ -395,6 +401,37 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                 e.printStackTrace();
             }
         }
+    }
 
+    class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
+    {
+        @Override
+        public View getInfoWindow(Marker arg0) {
+            return null;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+
+            Context context = getApplicationContext(); //or getActivity(), YourActivity.this, etc.
+
+            LinearLayout info = new LinearLayout(context);
+            info.setOrientation(LinearLayout.VERTICAL);
+
+            TextView title = new TextView(context);
+            title.setTextColor(Color.BLACK);
+            title.setGravity(Gravity.CENTER);
+            title.setTypeface(null, Typeface.BOLD);
+            title.setText(marker.getTitle());
+
+            TextView snippet = new TextView(context);
+            snippet.setTextColor(Color.GRAY);
+            snippet.setText(marker.getSnippet());
+
+            info.addView(title);
+            info.addView(snippet);
+
+            return info;
+        }
     }
 }
