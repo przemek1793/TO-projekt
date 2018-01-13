@@ -11,7 +11,6 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -453,8 +452,8 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
             info.addView(title);
             info.addView(snippet);
 
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(GPSActivity.this);
-            String zalogowano = prefs.getString("Zalogowano?","nie");
+            SharedPreferences sharedPreferences = GPSActivity.this.getSharedPreferences("DATA", Context.MODE_PRIVATE);
+            String zalogowano = sharedPreferences.getString("Zalogowano?","nie");
             if (zalogowano.equals("tak"))
             {
                 Button edytuj=new Button(context);
