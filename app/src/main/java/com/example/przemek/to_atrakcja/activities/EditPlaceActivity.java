@@ -22,6 +22,7 @@ public class EditPlaceActivity extends Activity
     String latitude,longitude;
     private static String URL_get_place = "http://192.168.0.13/get_place.php";
     private static String URL_delete_place = "http://192.168.0.13/delete_place.php";
+    private static String URL_edit_place = "http://192.168.0.13/edit_place.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +50,7 @@ public class EditPlaceActivity extends Activity
 
     public void TryToEditPlace (View view)
     {
+        new EditPlace().execute();
     }
 
     public void TryToDeletePlace (View view)
@@ -162,20 +164,12 @@ public class EditPlaceActivity extends Activity
                     InputPlaceClosingHoursEdit.setText(closingHours);
                     EditText InputPlaceDescriptionEdit = (EditText) findViewById(R.id.InputPlaceDescriptionEdit);
                     InputPlaceDescriptionEdit.setText(Opis);
-                    EditText InputPLaceLongitudeEdit = (EditText) findViewById(R.id.InputPLaceLongitudeEdit);
-                    InputPLaceLongitudeEdit.setText(longitude);
-                    EditText InputPlaceLatitudeEdit = (EditText) findViewById(R.id.InputPlaceLatitudeEdit);
-                    InputPlaceLatitudeEdit.setText(latitude);
                 }
                 else
                 {
                     String Typ="adasd";
                     EditText InputPlaceTypeEdit = (EditText) findViewById(R.id.InputPlaceTypeEdit);
                     InputPlaceTypeEdit.setText(Typ);
-                    EditText InputPLaceLongitudeEdit = (EditText) findViewById(R.id.InputPLaceLongitudeEdit);
-                    InputPLaceLongitudeEdit.setText(longitude);
-                    EditText InputPlaceLatitudeEdit = (EditText) findViewById(R.id.InputPlaceLatitudeEdit);
-                    InputPlaceLatitudeEdit.setText(latitude);
                 }
             }
             catch (JSONException e)
@@ -272,6 +266,113 @@ public class EditPlaceActivity extends Activity
                 {
                     e.printStackTrace();
                 }
+        }
+
+    }
+
+    class EditPlace extends AsyncTask<String, String, String> {
+
+        JSONObject jsonResponse;
+        String response;
+
+        protected String doInBackground(String... args) {
+
+            URL url;
+            HttpURLConnection urlConnection = null;
+            OutputStream os;
+            try {
+
+                String message;
+                EditText InputPlaceNameEdit=findViewById(R.id.InputPlaceNameEdit);
+                EditText TextInputPLaceTypeEdit=findViewById(R.id.InputPlaceTypeEdit);
+                EditText InputPlaceOpeningHourEdit=findViewById(R.id.InputPlaceOpeningHourEdit);
+                EditText InputPlaceClosingHoursEdit=findViewById(R.id.InputPlaceClosingHoursEdit);
+                EditText InputPlaceDescriptionEdit=findViewById(R.id.InputPlaceDescriptionEdit);
+
+                String Description=InputPlaceDescriptionEdit.getText().toString();
+                Description=Description.replaceAll("\\.","ǤЖ");
+
+                String hours=InputPlaceOpeningHourEdit.getText().toString()+ "-"  + InputPlaceClosingHoursEdit.getText().toString();
+                hours=hours.replaceAll("\\.","ǤЖ");
+
+                JSONObject jsonObject = new JSONObject();
+
+                String latitude1=latitude.replaceAll("\\.","ǤЖ");
+                String longitude1=longitude.replaceAll("\\.","ǤЖ");
+
+                jsonObject.put("Latitude", latitude1);
+                jsonObject.put("Longitude", longitude1);
+                jsonObject.put("Name", InputPlaceNameEdit.getText().toString());
+                jsonObject.put("Type", TextInputPLaceTypeEdit.getText().toString());
+                jsonObject.put("Hours", hours);
+                jsonObject.put("Description", Description);
+                message = jsonObject.toString();
+
+                url=new URL(URL_edit_place);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+                urlConnection.setDoInput(true);
+                urlConnection.setFixedLengthStreamingMode(message.getBytes().length);
+
+                urlConnection.connect();
+
+                OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
+
+                os = new BufferedOutputStream(urlConnection.getOutputStream());
+                os.write(message.getBytes("UTF-8"));
+
+                os.flush();
+
+                urlConnection.getResponseMessage();
+                urlConnection.getResponseCode();
+
+                InputStreamReader aa= new InputStreamReader((urlConnection.getInputStream()));
+                BufferedReader br = new BufferedReader(aa);
+
+                String line;
+                StringBuilder sb = new StringBuilder();
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                response=sb.toString();
+                os.close();
+                br.close();
+
+                urlConnection.disconnect();
+
+                jsonResponse = new JSONObject(response) ;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String file_url)
+        {
+            try
+            {
+                if (jsonResponse.getInt("success")==1)
+                {
+                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                    DatabaseResponse.setText(jsonResponse.getString("message"));
+                }
+                else
+                {
+                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                    DatabaseResponse.setText(jsonResponse.getString("message"));
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
         }
 
     }
