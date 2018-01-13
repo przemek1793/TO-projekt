@@ -194,6 +194,8 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                 {
                     PlaceLocation=point;
                     new AddPlace().execute();
+                    android.os.SystemClock.sleep(1000);
+                    new PopulateMapWithMarkers().execute();
                 }
             }
         });
