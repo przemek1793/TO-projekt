@@ -31,7 +31,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -245,14 +244,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
             mCurrLocationMarker.remove();
         }
 
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Aktualna pozycja");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
-
     }
 
     public void NormalMap (View view)
@@ -277,9 +268,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
     }
 
     class AddPlace extends AsyncTask<String, String, String> {
-
-        JSONObject jsonResponse;
-        String response;
 
         protected String doInBackground(String... args) {
 
@@ -458,9 +446,11 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
             {
                 Button edytuj=new Button(context);
                 edytuj.setText("edytuj");
+                edytuj.setBackgroundColor(Color.WHITE);
 
                 Button usun=new Button(context);
                 usun.setText("usun");
+                usun.setBackgroundColor(Color.WHITE);
 
                 info.addView(edytuj);
                 info.addView(usun);
