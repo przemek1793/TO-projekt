@@ -52,7 +52,6 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
 
     private static String URL_add_place = "http://192.168.0.13/add_place.php";
     private static String URL_get_places = "http://192.168.0.13/get_places.php";
-    private static String URL_delete_places = "http://192.168.0.13/delete_place.php";
     private FusedLocationProviderClient FusedLocationClient;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;
@@ -175,9 +174,10 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
                 if (zalogowano.equals("tak"))
                 {
                     Intent intent = new Intent(GPSActivity.this, EditPlaceActivity.class);
-                    intent.putExtra("pozycja",marker.getPosition());
+                    intent.putExtra("pozycja",marker.getPosition().toString());
                     intent.putExtra("nazwa",marker.getTitle());
                     startActivity(intent);
+                    finish();
                 }
             }
         });
