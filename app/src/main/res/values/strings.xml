@@ -61,4 +61,8 @@
     <string name="PlaceLatitudeHint">Szerokość geograficzna</string>
     <string name="TryToAddPlace">Dodaj miejsce</string>
 
+    <!-- EditPlaceActivity -->
+    <string name="EditPlace">Edytowanie miejsca</string>
+    <string name="TryToEditPlace">Zmien dane</string>
+    <string name="TryToDeletePlace">Usun miejsce</string>
 </resources>

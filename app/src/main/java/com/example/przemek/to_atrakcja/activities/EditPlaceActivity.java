@@ -2,6 +2,7 @@ package com.example.przemek.to_atrakcja.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import com.example.przemek.to_atrakcja.R;
 
 public class EditPlaceActivity extends Activity
@@ -17,5 +18,13 @@ public class EditPlaceActivity extends Activity
     public void onBackPressed()
     {
         finish();
+    }
+
+    public void TryToEditPlace (View view)
+    {
+    }
+
+    public void TryToDeletePlace (View view)
+    {
     }
 }

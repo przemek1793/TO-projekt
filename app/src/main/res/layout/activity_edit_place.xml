@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/RelativeLayoutStyle"
+                tools:context="com.example.przemek.to_atrakcja.activities.EditPlaceActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+            <TextView
+                    style="@style/TitleStyle"
+                    android:id="@+id/EditPLace"
+                    android:text="@string/EditPlace"/>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/EditPLace"
+                    android:id="@+id/TextInputPLaceNameEdit">
+                <EditText android:id="@+id/InputPlaceNameEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceNameHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPLaceNameEdit"
+                    android:id="@+id/TextInputPLaceTypeEdit">
+                <EditText android:id="@+id/InputPlaceTypeEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceTypeHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPLaceTypeEdit"
+                    android:id="@+id/TextInputPlaceOpeningHourEdit">
+                <EditText android:id="@+id/InputPlaceOpeningHourEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="time"
+                          android:hint="@string/PlaceOpeningHoursHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPlaceOpeningHourEdit"
+                    android:id="@+id/TextInputPlaceClosingHoursEdit">
+                <EditText android:id="@+id/InputPlaceClosingHoursEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="time"
+                          android:hint="@string/PlaceClosingHoursHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPlaceClosingHoursEdit"
+                    android:id="@+id/TextInputPlaceDescriptionEdit">
+                <EditText android:id="@+id/InputPlaceDescriptionEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="text"
+                          android:hint="@string/PlaceDescriptionHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPlaceDescriptionEdit"
+                    android:id="@+id/TextInputPlaceLongitudeEdit">
+                <EditText android:id="@+id/InputPLaceLongitudeEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="numberDecimal|numberSigned"
+                          android:hint="@string/PlaceLongitudeHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_below="@+id/TextInputPlaceLongitudeEdit"
+                    android:id="@+id/TextInputPlaceLatitudeEdit">
+                <EditText android:id="@+id/InputPlaceLatitudeEdit"
+                          style="@style/TextInputEditTextStyle"
+                          android:inputType="numberDecimal|numberSigned"
+                          android:hint="@string/PlaceLatitudeHint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                    android:layout_below="@+id/TextInputPlaceLatitudeEdit"
+                    android:id="@+id/DatabaseResponseEditPlace"
+                    style="@style/DatabaseResponseStyle"/>
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TryToAddPlaceButton"
+                    style="@style/MenuButtonStyle"
+                    android:text="@string/TryToEditPlace"
+                    android:onClick="TryToEditPlace"
+                    android:layout_below="@+id/DatabaseResponseEditPlace"
+            />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TryToDeletePlaceButton"
+                    style="@style/MenuButtonStyle"
+                    android:text="@string/TryToDeletePlace"
+                    android:onClick="TryToDeletePlace"
+                    android:layout_below="@+id/TryToAddPlaceButton"
+            />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 </RelativeLayout>
