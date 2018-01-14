@@ -21,8 +21,6 @@
         </activity>
         <activity android:name=".activities.LoginActivity">
         </activity>
-        <activity android:name=".activities.OptionsActivity">
-        </activity>
         <activity android:name=".activities.AdministratorActivity">
         </activity>
         <activity android:name=".activities.ManageMapsActivity">

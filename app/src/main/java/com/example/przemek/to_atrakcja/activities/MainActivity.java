@@ -28,13 +28,6 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-
-    public void Options (View view)
-    {
-        Intent intent = new Intent(this, OptionsActivity.class);
-        startActivity(intent);
-    }
-
     public void Login (View view)
     {
         SharedPreferences sharedPreferences = this.getSharedPreferences("DATA", Context.MODE_PRIVATE);

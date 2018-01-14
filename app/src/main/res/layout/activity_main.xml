@@ -11,35 +11,32 @@
             android:id="@+id/AppName"
             android:text="@string/AppName"/>
 
-    <Button
-            android:layout_width="wrap_content"
+    <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/GPS"
-            style="@style/MenuButtonStyle"
-            android:text="@string/GPS"
-            android:onClick="GPS"
-            android:layout_below="@+id/AppName"
-    />
+            android:layout_centerVertical="true">
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Gallery"
-            style="@style/MenuButtonStyle"
-            android:text="@string/Gallery"
-            android:onClick="Gallery"
-            android:layout_below="@+id/GPS"
-    />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/GPS"
+                style="@style/MenuButtonStyle"
+                android:text="@string/GPS"
+                android:onClick="GPS"
+        />
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Options"
-            style="@style/MenuButtonStyle"
-            android:text="@string/Options"
-            android:onClick="Options"
-            android:layout_below="@+id/Gallery"
-    />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Gallery"
+                style="@style/MenuButtonStyle"
+                android:text="@string/Gallery"
+                android:onClick="Gallery"
+                android:layout_below="@+id/GPS"
+        />
+
+    </RelativeLayout>
+
 
     <Button
             android:layout_width="wrap_content"
@@ -48,7 +45,7 @@
             style="@style/MenuButtonStyle"
             android:text="@string/LoginButton"
             android:onClick="Login"
-            android:layout_below="@+id/Options"
+            android:layout_alignParentBottom="true"
     />
 
 </RelativeLayout>

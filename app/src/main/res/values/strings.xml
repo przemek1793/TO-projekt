@@ -3,7 +3,7 @@
 
     <!-- MainActivity -->
     <string name="AppName">Atrakcja</string>
-    <string name="GPS">Mapa okolicy</string>
+    <string name="GPS">GPS</string>
     <string name="Gallery">Mapy konkretnych miast</string>
     <string name="Places">Pobliskie obiekty</string>
     <string name="Options">Opcje</string>

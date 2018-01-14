@@ -28,16 +28,6 @@
                 android:onClick="AddPLacesCurrent"
         />
 
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ManagePlacesAdmin"
-                style="@style/MenuButtonStyle"
-                android:text="@string/ManagePlacesAdmin"
-                android:layout_below="@+id/AddPLacesCurrent"
-                android:onClick="ManagePlacesAdmin"
-        />
-
     </RelativeLayout>
 
 </RelativeLayout>
