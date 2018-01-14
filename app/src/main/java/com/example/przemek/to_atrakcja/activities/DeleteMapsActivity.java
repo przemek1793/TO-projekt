@@ -25,7 +25,7 @@ import java.net.URL;
 
 public class DeleteMapsActivity extends Activity
 {
-    private static String URL_get_maps = "http://192.168.0.13/get_maps.php";
+    private static String URL_get_maps = "http://192.168.1.167/get_maps.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

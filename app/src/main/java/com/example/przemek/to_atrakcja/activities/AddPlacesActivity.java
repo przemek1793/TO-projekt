@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class AddPlacesActivity extends Activity
 {
-    private static String URL_add_place = "http://192.168.0.13/add_place.php";
+    private static String URL_add_place = "http://192.168.1.167/add_place.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

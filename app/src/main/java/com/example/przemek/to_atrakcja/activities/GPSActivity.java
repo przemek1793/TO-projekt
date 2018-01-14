@@ -50,8 +50,8 @@ public class GPSActivity extends Activity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
-    private static String URL_add_place = "http://192.168.0.13/add_place.php";
-    private static String URL_get_places = "http://192.168.0.13/get_places.php";
+    private static String URL_add_place = "http://192.168.1.167/add_place.php";
+    private static String URL_get_places = "http://192.168.1.167/get_places.php";
     private FusedLocationProviderClient FusedLocationClient;
     GoogleMap mGoogleMap;
     SupportMapFragment mapFrag;

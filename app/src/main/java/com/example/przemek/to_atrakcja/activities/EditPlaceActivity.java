@@ -20,9 +20,9 @@ public class EditPlaceActivity extends Activity
 {
     String nazwa;
     String latitude,longitude;
-    private static String URL_get_place = "http://192.168.0.13/get_place.php";
-    private static String URL_delete_place = "http://192.168.0.13/delete_place.php";
-    private static String URL_edit_place = "http://192.168.0.13/edit_place.php";
+    private static String URL_get_place = "http://192.168.1.167/get_place.php";
+    private static String URL_delete_place = "http://192.168.1.167/delete_place.php";
+    private static String URL_edit_place = "http://192.168.1.167/edit_place.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

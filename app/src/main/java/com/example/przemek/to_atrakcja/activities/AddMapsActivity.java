@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class AddMapsActivity extends Activity
 {
-    private static String URL_add_map = "http://192.168.0.13/add_map.php";
+    private static String URL_add_map = "http://192.168.1.167/add_map.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

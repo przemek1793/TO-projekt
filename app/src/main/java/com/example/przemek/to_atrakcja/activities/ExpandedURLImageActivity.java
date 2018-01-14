@@ -27,7 +27,7 @@ import java.net.URL;
 
 public class ExpandedURLImageActivity extends Activity
 {
-    private static String URL_delete_map = "http://192.168.0.13/delete_map.php";
+    private static String URL_delete_map = "http://192.168.1.167/delete_map.php";
 
     String cel, MapURL, CzyPoprawny,Name;
     TouchImageView URLImage;
