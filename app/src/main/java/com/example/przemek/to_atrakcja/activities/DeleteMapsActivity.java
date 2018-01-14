@@ -95,7 +95,7 @@ public class DeleteMapsActivity extends Activity
             {
                 if (jsonResponse.getInt("success")==1)
                 {
-                    TableLayout table = (TableLayout) findViewById(R.id.TableDeleteMapData);
+                    TableLayout table = findViewById(R.id.TableDeleteMapData);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
@@ -125,7 +125,7 @@ public class DeleteMapsActivity extends Activity
                 {
                     try
                     {
-                        TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddMap);
+                        TextView DatabaseResponse = findViewById(R.id.DatabaseResponseAddMap);
                         DatabaseResponse.setText(jsonResponse.getString("message"));
                     }
                     catch(Exception e)

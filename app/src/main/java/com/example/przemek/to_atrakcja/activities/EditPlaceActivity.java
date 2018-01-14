@@ -135,11 +135,8 @@ public class EditPlaceActivity extends Activity
                 {
                     JSONArray markers=(JSONArray ) jsonResponse.get("Places");
                     JSONObject object = markers.getJSONObject(0);
-                    String latitude = object.getString("Latitude").replaceAll("ǤЖ","\\.");
-                    String longitude = object.getString("Longitude").replaceAll("ǤЖ","\\.");
                     String hours = object.getString("Hours").replaceAll("ǤЖ","\\.");
                     String Opis=object.getString("Description").replaceAll("ǤЖ","\\.");
-                    String Typ=object.getString("Type").replaceAll("ǤЖ","\\.");
                     String nazwa = object.getString("Name").replaceAll("ǤЖ","\\.");
 
                     String[] godziny =  hours.split("-");
@@ -163,22 +160,19 @@ public class EditPlaceActivity extends Activity
                         closingHours="";
                     }
 
-                    EditText InputPlaceNameEdit = (EditText) findViewById(R.id.InputPlaceNameEdit);
+                    EditText InputPlaceNameEdit = findViewById(R.id.InputPlaceNameEdit);
                     InputPlaceNameEdit.setText(nazwa);
-                    EditText InputPlaceTypeEdit = (EditText) findViewById(R.id.InputPlaceTypeEdit);
-                    InputPlaceTypeEdit.setText(Typ);
-                    EditText InputPlaceOpeningHourEdit = (EditText) findViewById(R.id.InputPlaceOpeningHourEdit);
+                    EditText InputPlaceOpeningHourEdit = findViewById(R.id.InputPlaceOpeningHourEdit);
                     InputPlaceOpeningHourEdit.setText(openingHours);
-                    EditText InputPlaceClosingHoursEdit = (EditText) findViewById(R.id.InputPlaceClosingHoursEdit);
+                    EditText InputPlaceClosingHoursEdit = findViewById(R.id.InputPlaceClosingHoursEdit);
                     InputPlaceClosingHoursEdit.setText(closingHours);
-                    EditText InputPlaceDescriptionEdit = (EditText) findViewById(R.id.InputPlaceDescriptionEdit);
+                    EditText InputPlaceDescriptionEdit = findViewById(R.id.InputPlaceDescriptionEdit);
                     InputPlaceDescriptionEdit.setText(Opis);
                 }
                 else
                 {
-                    String Typ="adasd";
-                    EditText InputPlaceTypeEdit = (EditText) findViewById(R.id.InputPlaceTypeEdit);
-                    InputPlaceTypeEdit.setText(Typ);
+                    EditText InputPlaceTypeEdit = findViewById(R.id.DatabaseResponseEditPlace);
+                    InputPlaceTypeEdit.setText("bląd przy pobieraniu danych z bazy");
                 }
             }
             catch (JSONException e)
@@ -262,12 +256,12 @@ public class EditPlaceActivity extends Activity
                 {
                     if (jsonResponse.getInt("success")==1)
                     {
-                        TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                        TextView DatabaseResponse = findViewById(R.id.DatabaseResponseEditPlace);
                         DatabaseResponse.setText(jsonResponse.getString("message"));
                     }
                     else
                     {
-                        TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                        TextView DatabaseResponse = findViewById(R.id.DatabaseResponseEditPlace);
                         DatabaseResponse.setText(jsonResponse.getString("message"));
                     }
                 }
@@ -293,7 +287,6 @@ public class EditPlaceActivity extends Activity
 
                 String message;
                 EditText InputPlaceNameEdit=findViewById(R.id.InputPlaceNameEdit);
-                EditText TextInputPLaceTypeEdit=findViewById(R.id.InputPlaceTypeEdit);
                 EditText InputPlaceOpeningHourEdit=findViewById(R.id.InputPlaceOpeningHourEdit);
                 EditText InputPlaceClosingHoursEdit=findViewById(R.id.InputPlaceClosingHoursEdit);
                 EditText InputPlaceDescriptionEdit=findViewById(R.id.InputPlaceDescriptionEdit);
@@ -312,7 +305,6 @@ public class EditPlaceActivity extends Activity
                 jsonObject.put("Latitude", latitude1);
                 jsonObject.put("Longitude", longitude1);
                 jsonObject.put("Name", InputPlaceNameEdit.getText().toString());
-                jsonObject.put("Type", TextInputPLaceTypeEdit.getText().toString());
                 jsonObject.put("Hours", hours);
                 jsonObject.put("Description", Description);
                 message = jsonObject.toString();
@@ -369,12 +361,12 @@ public class EditPlaceActivity extends Activity
             {
                 if (jsonResponse.getInt("success")==1)
                 {
-                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                    TextView DatabaseResponse = findViewById(R.id.DatabaseResponseEditPlace);
                     DatabaseResponse.setText(jsonResponse.getString("message"));
                 }
                 else
                 {
-                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseEditPlace);
+                    TextView DatabaseResponse = findViewById(R.id.DatabaseResponseEditPlace);
                     DatabaseResponse.setText(jsonResponse.getString("message"));
                 }
             }

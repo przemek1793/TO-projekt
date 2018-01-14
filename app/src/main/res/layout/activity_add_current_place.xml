@@ -27,16 +27,6 @@
             <android.support.design.widget.TextInputLayout
                     style="@style/TextInputLayoutStyle"
                     android:layout_below="@+id/TextInputCurrentPLaceName"
-                    android:id="@+id/TextInputCurrentPLaceType">
-                <EditText android:id="@+id/InputCurrentPlaceType"
-                          style="@style/TextInputEditTextStyle"
-                          android:inputType="text"
-                          android:hint="@string/PlaceTypeHint" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayoutStyle"
-                    android:layout_below="@+id/TextInputCurrentPLaceType"
                     android:id="@+id/TextInputCurrentPlaceOpeningHour">
                 <EditText android:id="@+id/InputCurrentPlaceOpeningHour"
                           style="@style/TextInputEditTextStyle"

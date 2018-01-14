@@ -45,7 +45,7 @@ public class AddPlacesActivity extends Activity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddPlaceButton);
+            Button TryToAddPlaceButton= findViewById(R.id.TryToAddPlaceButton);
             TryToAddPlaceButton.setText("Dodawanie miejsca");
         }
 
@@ -57,7 +57,6 @@ public class AddPlacesActivity extends Activity
             try {
                 String message;
                 EditText InputPlaceName=findViewById(R.id.InputPlaceName);
-                EditText InputPlaceType=findViewById(R.id.InputPlaceType);
                 EditText InputPlaceOpeningHour=findViewById(R.id.InputPlaceOpeningHour);
                 EditText InputPlaceClosingHours=findViewById(R.id.InputPlaceClosingHours);
                 EditText InputPlaceDescription=findViewById(R.id.InputPlaceDescription);
@@ -77,7 +76,6 @@ public class AddPlacesActivity extends Activity
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("Name", InputPlaceName.getText().toString());
-                jsonObject.put("Type", InputPlaceType.getText().toString());
                 jsonObject.put("Hours", hours);
                 jsonObject.put("Description", Description);
                 jsonObject.put("Latitude", Latitude);
@@ -135,14 +133,14 @@ public class AddPlacesActivity extends Activity
          * **/
         protected void onPostExecute(String file_url) {
             try {
-                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddPlace);
+                TextView DatabaseResponse = findViewById(R.id.DatabaseResponseAddPlace);
                 DatabaseResponse.setText(jsonResponse.getString("message"));
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            Button TryToAddPlaceButton=(Button)findViewById(R.id.TryToAddPlaceButton);
+            Button TryToAddPlaceButton= findViewById(R.id.TryToAddPlaceButton);
             TryToAddPlaceButton.setText("Dodaj miejsce");
         }
 

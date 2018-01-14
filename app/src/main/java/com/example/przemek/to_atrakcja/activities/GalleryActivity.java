@@ -101,7 +101,7 @@ public class GalleryActivity extends Activity
             {
                 if (jsonResponse.getInt("success")==1)
                 {
-                    TableLayout table = (TableLayout) findViewById(R.id.TableGallery);
+                    TableLayout table = findViewById(R.id.TableGallery);
                     JSONArray jsonrzedy=(JSONArray ) jsonResponse.get("Mapy");
                     for(int n = 0; n < jsonrzedy.length(); n++)
                     {
@@ -132,7 +132,7 @@ public class GalleryActivity extends Activity
                 {
                     try
                     {
-                        TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseGallery);
+                        TextView DatabaseResponse = findViewById(R.id.DatabaseResponseGallery);
                         DatabaseResponse.setText(jsonResponse.getString("message"));
                     }
                     catch(Exception e)

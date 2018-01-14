@@ -40,7 +40,7 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
+            Button TryToLogButton= findViewById(R.id.TryToLogButton);
             TryToLogButton.setText("Logowanie");
         }
 
@@ -120,9 +120,9 @@ public class LoginActivity extends Activity {
                 }
                 else
                 {
-                    TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseLogin);
+                    TextView DatabaseResponse = findViewById(R.id.DatabaseResponseLogin);
                     DatabaseResponse.setText(jsonResponse.getString("message"));
-                    Button TryToLogButton=(Button)findViewById(R.id.TryToLogButton);
+                    Button TryToLogButton= findViewById(R.id.TryToLogButton);
                     TryToLogButton.setText("Zaloguj");
                 }
             }

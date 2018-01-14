@@ -41,11 +41,11 @@ public class ExpandedURLImageActivity extends Activity
         MapURL = intent.getStringExtra("MapURL");
         CzyPoprawny = intent.getStringExtra("CzyPoprawny");
         URLImage = (TouchImageView) LayoutInflater.from(this).inflate(R.layout.expanded_url_image, null);
-        RelativeLayout Container = (RelativeLayout) findViewById(R.id.ExpandedURLImageContainter);
+        RelativeLayout Container = findViewById(R.id.ExpandedURLImageContainter);
         Container.addView(URLImage);
         cel = intent.getStringExtra("Cel");
         Name = intent.getStringExtra("Name");
-        Button przycisk = (Button) findViewById(R.id.ExpandedURLIMageButton);
+        Button przycisk = findViewById(R.id.ExpandedURLIMageButton);
         if (cel.equals("Usuwanie"))
         {
             przycisk.setText("Usuń");
@@ -124,7 +124,7 @@ public class ExpandedURLImageActivity extends Activity
     {
         if (CzyPoprawny.equals("nie"))
         {
-            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            Button TryToLogButton= findViewById(R.id.ExpandedURLIMageButton);
             TryToLogButton.setText("Nie można ściągać niepoprawnych plików");
         }
         else
@@ -141,7 +141,7 @@ public class ExpandedURLImageActivity extends Activity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            Button TryToLogButton= findViewById(R.id.ExpandedURLIMageButton);
             TryToLogButton.setText("Usuwanie");
         }
 
@@ -216,7 +216,7 @@ public class ExpandedURLImageActivity extends Activity
                 }
                 else
                 {
-                    Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+                    Button TryToLogButton= findViewById(R.id.ExpandedURLIMageButton);
                     TryToLogButton.setText("Bląd przy usuwaniu mapy");
                 }
             }
@@ -233,7 +233,7 @@ public class ExpandedURLImageActivity extends Activity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            Button TryToLogButton= findViewById(R.id.ExpandedURLIMageButton);
             TryToLogButton.setText("Ściąganie");
         }
 
@@ -265,7 +265,7 @@ public class ExpandedURLImageActivity extends Activity
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            Button TryToLogButton=(Button)findViewById(R.id.ExpandedURLIMageButton);
+            Button TryToLogButton= findViewById(R.id.ExpandedURLIMageButton);
             TryToLogButton.setText("Ściągnięto");
         }
 

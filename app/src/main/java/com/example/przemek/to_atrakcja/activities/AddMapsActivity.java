@@ -45,7 +45,7 @@ public class AddMapsActivity extends Activity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Button TryToLogButton=(Button)findViewById(R.id.TryToAddMapButton);
+            Button TryToLogButton= findViewById(R.id.TryToAddMapButton);
             TryToLogButton.setText("Dodawanie mapy");
         }
 
@@ -117,14 +117,14 @@ public class AddMapsActivity extends Activity
          * **/
         protected void onPostExecute(String file_url) {
             try {
-                TextView DatabaseResponse = (TextView) findViewById(R.id.DatabaseResponseAddMap);
+                TextView DatabaseResponse = findViewById(R.id.DatabaseResponseAddMap);
                 DatabaseResponse.setText(jsonResponse.getString("message"));
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            Button TryToLogButton=(Button)findViewById(R.id.TryToAddMapButton);
+            Button TryToLogButton= findViewById(R.id.TryToAddMapButton);
             TryToLogButton.setText("Dodaj mapę");
         }
 
